@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satellite View | Filinvest East Homes</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #1a1a1a; 
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #map {
+            height: 600px;
+            width: 100%;
+            max-width: 1000px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 2px solid #444;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .info-overlay {
+            margin-top: -60px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm sticky-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="campaign.html">
+            <img src="pfp.jpg" alt="Logo" style="height:40px; border-radius: 50%; margin-right:10px;">
+        </a>
+    <div class="header">
+        <h1>Location: Filinvest East Homes</h1>
+        <p>Satellite Imagery View (Cainta / Antipolo)</p>
+    </div>
+
+    <div id="map"></div>
+
+    <div class="info-overlay">
+        <strong>Coordinates:</strong> 14.623124,121.115693,356.7
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        // Coordinates set to a central point in Filinvest East Homes
+        const coords = [14.623124,121.115693,356.7];
+
+        const map = L.map('map', {
+            center: coords,
+            zoom: 16, // Zoomed slightly out to show the village layout
+            maxZoom: 50,
+        });
+
+        const satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri'
+        });
+
+        const streetLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        });
+
+        satelliteLayer.addTo(map);
+
+        const baseMaps = {
+            "Satellite View": satelliteLayer,
+            "Street Map": streetLayer
+        };
+        L.control.layers(baseMaps).addTo(map);
+
+        const marker = L.circleMarker(coords, {
+            radius: 12,
+            fillColor: "#00ccff", // Changed to blue for a fresh look
+            color: "#fff",
+            weight: 3,
+            opacity: 1,
+            fillOpacity: 0.8
+        }).addTo(map);
+
+        marker.bindPopup("<b>Filinvest East Homes</b><br>Marcos Highway").openPopup();
+    </script>
+</body>
+</html>

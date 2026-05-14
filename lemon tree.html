@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satellite View | Lemon Tree Building</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        #map {
+            height: 550px;
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid #334155;
+        }
+
+        .header-card {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 5px solid #fbbf24; /* Yellow accent for "Lemon" tree */
+        }
+
+        h2 { margin: 0; color: #fbbf24; font-size: 1.5rem; }
+        p { margin: 5px 0 0; color: #94a3b8; }
+
+        /* Custom Popup Styling */
+        .leaflet-popup-content-wrapper {
+            background: #1e293b;
+            color: white;
+            border-radius: 8px;
+        }
+        .leaflet-popup-tip { background: #1e293b; }
+    </style>
+</head>
+<body>
+    
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm sticky-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="campaign.html">
+            <img src="pfp.jpg" alt="Logo" style="height:40px; border-radius: 50%; margin-right:10px;">
+        </a>
+
+    <div class="container">
+        <div class="header-card">
+            <h2>Lemon Tree Office</h2>
+            <p>18 Scout Magbanua St, Diliman, Quezon City, Metro Manila</p>
+        </div>
+
+        <div id="map"></div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        // Coordinates for Lemon Tree Building, Scout Magbanua St.
+        // Approx: 14.63445,121.022856,56.86
+        const lemonTreeCoords = [14.63445,121.022856,56.86];
+
+        // 1. Initialize map
+        const map = L.map('map', {
+            center: lemonTreeCoords,
+            zoom: 19, 
+            maxZoom: 20
+        });
+
+        // 2. Satellite Layer (Esri)
+        const satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; DigitalGlobe'
+        }).addTo(map);
+
+        // 3. Street Layer (OSM)
+        const streets = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap'
+        });
+
+        // Layer Toggle
+        const baseMaps = {
+            "Satellite View": satellite,
+            "Street View": streets
+        };
+        L.control.layers(baseMaps).addTo(map);
+
+        // 4. Building Marker
+        const marker = L.marker(lemonTreeCoords).addTo(map);
+
+        // 5. Interactive Popup with Floor Details
+        marker.bindPopup(`
+            <div style="text-align: center;">
+                <strong style="color:#fbbf24">LEMON TREE BUILDING</strong><br>
+                <span style="font-size: 1.1em;">Room 401, 4th Floor</span><br>
+                <hr style="border:0; border-top:1px solid #444; margin: 8px 0;">
+                <small>18 Scout Magbanua St.</small>
+            </div>
+        `).openPopup();
+
+        // Auto-center on load
+        map.panTo(lemonTreeCoords);
+    </script>
+</body>
+</html>

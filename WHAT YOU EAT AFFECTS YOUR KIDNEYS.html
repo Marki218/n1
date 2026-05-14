@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kidney Health Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #28a745; 
+            --primary-light: #d4edda;
+            --primary-dark: #1e7e34;
+            --accent: #ffc107;
+            --white: #ffffff;
+            --text: #2d3436;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at top left, var(--primary), #1a1a1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: moveBg 30s linear infinite;
+        }
+
+        @keyframes moveBg {
+            from { background-position: 0 0; }
+            to { background-position: 1000px 1000px; }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 40px;
+            padding: 80px 30px 40px; /* Adjusted top padding for the header */
+            max-width: 440px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* HEADER WITH BACK ARROW */
+        .alert-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--primary-dark);
+            color: white;
+            padding: 0 20px;
+            height: 65px;
+            border-radius: 40px 40px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 800;
+            font-size: 0.7rem;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .back-link:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(-3px);
+        }
+
+        .profile-img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            object-fit: cover;
+        }
+
+        /* GAUGE */
+        .gauge-wrapper {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 20px;
+        }
+
+        .gauge-svg { width: 100%; height: 100%; }
+        .circle-bg { fill: none; stroke: #eee; stroke-width: 10; }
+        .circle-progress {
+            fill: none;
+            stroke: var(--primary);
+            stroke-width: 10;
+            stroke-linecap: round;
+            transform: rotate(-90deg);
+            transform-origin: center;
+            transition: stroke-dashoffset 0.3s ease;
+        }
+
+        .timer-display {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #countdown { font-size: 2.2rem; font-weight: 900; color: var(--primary-dark); }
+        .timer-label { font-size: 0.6rem; text-transform: uppercase; color: #888; font-weight: 700; display: block; }
+
+        /* TEXT */
+        h1 { font-size: 1.6rem; color: var(--text); font-weight: 900; margin-bottom: 8px; }
+        .subtitle { font-size: 0.95rem; color: #636e72; margin-bottom: 25px; }
+
+        /* GRID */
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .benefit-item {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+        }
+
+        .benefit-item i { color: var(--accent); }
+
+        /* BUTTONS */
+        .controls { display: flex; gap: 10px; }
+        .btn {
+            flex: 1;
+            padding: 16px;
+            border: none;
+            border-radius: 18px;
+            font-weight: 900;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .btn-start { background: var(--primary); color: white; }
+        .btn-pause { background: #dfe6e9; color: var(--text); }
+        .btn-reset { background: #ff7675; color: white; }
+
+        @media (max-width: 400px) {
+            .benefit-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <header class="alert-header">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <span><i class="fas fa-shield-heart"></i> Kidney Shield</span>
+            <a href="profile.html">
+                <img src="pfp.jpg" alt="Profile" class="profile-img" onerror="this.src='https://ui-avatars.com/api/?name=User&background=28a745&color=fff'">
+            </a>
+        </header>
+
+        <div class="gauge-wrapper">
+            <svg class="gauge-svg" viewBox="0 0 120 120">
+                <circle class="circle-bg" cx="60" cy="60" r="52"/>
+                <circle id="progress" class="circle-progress" cx="60" cy="60" r="52"/>
+            </svg>
+            <div class="timer-display">
+                <span id="countdown">10:00</span>
+                <span class="timer-label">Session</span>
+            </div>
+        </div>
+
+        <h1>WHAT YOU EAT MATTERS</h1>
+        <p class="subtitle">Fuel your kidneys with movement and hydration focus.</p>
+
+        <div class="benefit-grid">
+            <div class="benefit-item"><i class="fas fa-walking"></i> Circulation</div>
+            <div class="benefit-item"><i class="fas fa-heart"></i> BP Control</div>
+            <div class="benefit-item"><i class="fas fa-tint"></i> Salt Flush</div>
+            <div class="benefit-item"><i class="fas fa-shield-alt"></i> Protection</div>
+        </div>
+
+        <div class="controls">
+            <button id="startBtn" class="btn btn-start"><i class="fas fa-play"></i> Start</button>
+            <button id="pauseBtn" class="btn btn-pause"><i class="fas fa-pause"></i></button>
+            <button id="resetBtn" class="btn btn-reset"><i class="fas fa-redo"></i></button>
+        </div>
+    </div>
+
+    <script>
+        const total = 600;
+        let time = total;
+        let timer = null;
+
+        const countdown = document.getElementById("countdown");
+        const progressCircle = document.getElementById("progress");
+        const circumference = 2 * Math.PI * 52;
+
+        progressCircle.style.strokeDasharray = circumference;
+
+        function updateUI() {
+            const minutes = Math.floor(time / 60);
+            const seconds = time % 60;
+            countdown.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            const offset = circumference - (time / total) * circumference;
+            progressCircle.style.strokeDashoffset = offset;
+        }
+
+        document.getElementById("startBtn").addEventListener("click", () => {
+            if (timer) return;
+            timer = setInterval(() => {
+                if (time <= 0) {
+                    clearInterval(timer);
+                    timer = null;
+                    alert("Session complete! Stay hydrated. 💧");
+                    return;
+                }
+                time--;
+                updateUI();
+            }, 1000);
+        });
+
+        document.getElementById("pauseBtn").addEventListener("click", () => {
+            clearInterval(timer);
+            timer = null;
+        });
+
+        document.getElementById("resetBtn").addEventListener("click", () => {
+            clearInterval(timer);
+            timer = null;
+            time = total;
+            updateUI();
+        });
+
+        updateUI();
+    </script>
+</body>
+</html>

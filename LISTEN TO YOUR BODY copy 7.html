@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio-Flow Reminder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --danger: #ff3b30;
+            --warning: #ffcc00;
+            --safe: #34c759;
+            --glass: rgba(255, 255, 255, 0.85);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #1c1c1e; /* Deep Charcoal Mobile Background */
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 20px;
+        }
+
+        /* FLOATING NOTIFICATION CARD */
+        .reminder-card {
+            width: 100%;
+            max-width: 360px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            position: relative;
+            animation: slideUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* TOP STATUS BAR */
+        .status-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .back-nav {
+            text-decoration: none;
+            color: #8e8e93;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .pfp-mini {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1.5px solid var(--danger);
+        }
+
+        /* CENTER CONTENT */
+        .timer-circle {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px;
+            border: 6px solid #e5e5ea;
+            border-top: 6px solid var(--danger);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .timer-circle i {
+            font-size: 2rem;
+            color: var(--danger);
+            animation: pulseIcon 1s infinite alternate;
+        }
+
+        @keyframes pulseIcon {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+
+        .content { text-align: center; }
+
+        h1 { font-size: 1.2rem; font-weight: 700; color: #000; margin-bottom: 4px; }
+        p { font-size: 0.9rem; color: #3a3a3c; line-height: 1.4; margin-bottom: 20px; }
+
+        /* URGENCY CHIPS */
+        .chip-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .chip {
+            background: rgba(0,0,0,0.05);
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* INTERACTION BUTTONS */
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-main {
+            background: #007aff;
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 16px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-main:active { transform: scale(0.98); background: #0063cc; }
+
+        .btn-snooze {
+            background: transparent;
+            color: #007aff;
+            border: none;
+            padding: 10px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="reminder-card">
+        <!-- HEADER -->
+        <div class="status-header">
+            <a href="index.html#home" class="back-nav">
+                <i class="fas fa-chevron-left"></i> Home
+            </a>
+            <a href="index.html#gallery">
+                <img src="pfp.jpg" class="pfp-mini" onerror="this.src='https://ui-avatars.com/api/?name=Alert&background=ff3b30&color=fff'">
+            </a>
+        </div>
+
+        <!-- VISUAL ALERT -->
+        <div class="timer-circle">
+            <i class="fas fa-exclamation-circle"></i>
+        </div>
+
+        <div class="content">
+            <h1>Movement Overdue</h1>
+            <p>You’ve been sitting for <b>60 minutes</b>. Your kidneys need active blood flow to maintain filtration efficiency.</p>
+        </div>
+
+        <!-- CHIPS -->
+        <div class="chip-container">
+            <div class="chip"><i class="fas fa-clock"></i> 1h Limit</div>
+            <div class="chip"><i class="fas fa-walking"></i> Walk 2m</div>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="btn-group">
+            <button class="btn-main" onclick="alert('Great! Record your 2-minute walk now.')">
+                I'm Standing Up Now
+            </button>
+            <button class="btn-snooze" onclick="alert('Reminder snoozed for 10 minutes.')">
+                Remind me in 10 mins
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>

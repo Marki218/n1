@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Drive - 1 PAG-ASA</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e92828, #000000);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px 0;
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .navbar-brand img {
+            height: 45px;
+            width: 45px;
+            border-radius: 50%;
+            border: 2px solid white;
+            object-fit: cover;
+        }
+
+        /* Poster Styling */
+        .poster {
+            background: #ffffff;
+            max-width: 400px;
+            width: 100%;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .header {
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .sub-header {
+            color: #c0392b;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .donation-box {
+            background: #c0392b;
+            color: white;
+            font-size: 32px;
+            font-weight: 900;
+            padding: 5px;
+            margin: 2px 0;
+            line-height: 1.2;
+        }
+
+        .green-text {
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 15px;
+            margin: 15px 0;
+        }
+
+        .message {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .qr-container {
+            border: 3px dashed #333;
+            border-radius: 15px;
+            padding: 15px;
+            margin: 15px auto;
+            max-width: 220px;
+        }
+
+        .qr-container img {
+            width: 100%;
+            display: block;
+        }
+
+        .icons {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .icon {
+            flex: 1;
+            padding: 10px 5px;
+            color: white;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .blue { background: #2c3e50; }
+        .red { background: #e74c3c; }
+        .green { background: #27ae60; }
+
+        .footer {
+            font-size: 12px;
+            margin-top: 15px;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+
+        .socials {
+            margin-top: 15px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar Fix: Closed tags properly -->
+    <nav class="navbar">
+        <a class="navbar-brand" href="campaign.html">
+            <img src="pfp.jpg" alt="Logo">
+        </a>
+    </nav>
+
+    <div class="poster">
+        <div class="header">1 PAG-ASA</div>
+        <div class="sub-header">Kidneys Alagaan Natin</div>
+
+        <div class="donation-box">DONATION</div>
+        <div class="donation-box" style="margin-bottom: 15px;">DRIVE</div>
+
+        <div class="green-text">
+            I am a Kidney Disease Awareness Warrior!
+        </div>
+
+        <div class="message">
+            You have the ability to change someone’s life.<br>
+            Support the <span style="color:#27ae60; font-weight: bold;">Green Ribbon Movement</span>
+        </div>
+
+        <div class="qr-container">
+            <!-- Ensure qr.jpg is in the same folder -->
+            <img src="qr.jpg" alt="Scan to Donate">
+        </div>
+
+        <div class="icons">
+            <div class="icon blue">BANKS</div>
+            <div class="icon red">E-WALLETS</div>
+            <div class="icon green">AND MORE</div>
+        </div>
+
+        <div class="footer">
+            Powered by <span style="color:#c0392b; font-weight: bold;">BPI</span>
+        </div>
+
+        <div class="socials">
+            Follow our social media channels<br>
+            <span style="color: #c0392b;">@1PAG-ASA</span>
+        </div>
+    </div>
+
+</body>
+</html>

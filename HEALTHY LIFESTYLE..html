@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Lifestyle - Kidney Health Card</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #2ecc71;
+            --secondary: #27ae60;
+            --accent: #e74c3c;
+            --dark: #2d3436;
+            --light: #f9f9f9;
+            --glass: rgba(255, 255, 255, 0.85);
+            --grad-bg: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            --btn-grad: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            /* Animated background for a premium feel */
+            background: var(--grad-bg);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            padding: 20px;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .healthy-lifestyle-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 60px 40px 40px;
+            max-width: 440px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .healthy-lifestyle-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Alert Header Section */
+        .alert-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--accent);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px 30px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .alert-bar img {
+            height: 32px;
+            width: 32px;
+            border-radius: 50%;
+            border: 2px solid white;
+            transition: transform 0.2s;
+        }
+
+        .alert-bar img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Kidney Health Badge */
+        .health-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(40, 167, 69, 0.1);
+            color: var(--secondary);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border: 1px solid rgba(40, 167, 69, 0.2);
+        }
+
+        /* Main Icon */
+        .main-icon {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            filter: drop-shadow(0 5px 10px rgba(46, 204, 113, 0.3));
+        }
+
+        /* Titles */
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .card-subtitle {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        /* Benefits List */
+        .benefits-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            background: white;
+            padding: 12px 15px;
+            border-radius: 18px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .benefit-item:hover {
+            border-color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .benefit-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--btn-grad);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        /* Stats Section */
+        .stats-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.5);
+            padding: 15px;
+            border-radius: 20px;
+            border: 1px solid white;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: #777;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        /* Button */
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background: var(--btn-grad);
+            color: white;
+            padding: 16px;
+            border-radius: 18px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(40, 167, 69, 0.3);
+        }
+
+        .cta-button:hover {
+            box-shadow: 0 15px 25px rgba(40, 167, 69, 0.4);
+            filter: brightness(1.05);
+            gap: 15px;
+        }
+
+        /* Background Graphics */
+        .bg-blob {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.05;
+            font-size: 6rem;
+            bottom: 20px;
+            right: 20px;
+            color: var(--dark);
+            transform: rotate(-15deg);
+        }
+
+        /* Mobile Fixes */
+        @media (max-width: 400px) {
+            .healthy-lifestyle-card {
+                padding: 50px 20px 30px;
+            }
+            .card-title { font-size: 1.5rem; }
+            .stats-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="healthy-lifestyle-card">
+        <!-- Alert Top Bar -->
+        <div class="alert-bar">
+            <span><i class="fas fa-bullhorn"></i> Health Alert</span>
+            <a href="index.html#gallery">
+                <!-- Fallback to icon if image missing -->
+                <img src="pfp.jpg" alt="Profile" onerror="this.src='https://ui-avatars.com/api/?name=User&background=random'">
+            </a>
+        </div>
+
+        <div class="health-badge">
+            <i class="fas fa-shield-heart"></i> Wellness Guide
+        </div>
+        
+        <div class="main-icon">
+            <i class="fas fa-heart-pulse"></i>
+        </div>
+        
+        <h1 class="card-title">HEALTHY LIVING</h1>
+        
+        <p class="card-subtitle">
+            Protect your kidneys with daily movement, clean eating, and hydration.
+        </p>
+        
+        <div class="benefits-list">
+            <div class="benefit-item">
+                <div class="benefit-icon"><i class="fas fa-walking"></i></div>
+                <span>30 Mins Daily Activity</span>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon"><i class="fas fa-apple-whole"></i></div>
+                <span>Nutrient-Rich Diet</span>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon"><i class="fas fa-droplet"></i></div>
+                <span>Hydrate & Low Sodium</span>
+            </div>
+        </div>
+        
+        <div class="stats-row">
+            <div class="stat-item">
+                <span class="stat-number">80%</span>
+                <span class="stat-label">Protection</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">50%</span>
+                <span class="stat-label">Lower Risk</span>
+            </div>
+        </div>
+        
+        <a href="index.html" class="cta-button">
+            <i class="fas fa-chevron-left"></i> Back to Dashboard
+        </a>
+
+        <i class="fas fa-kidneys bg-blob"></i>
+    </div>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gentle Fruit Sync | Updated Navigation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --leaf-green: #7ca982;
+            --soft-cream: #f1f7ed;
+            --berry-red: #e07a5f;
+            --glass: rgba(255, 255, 255, 0.7);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f1f7ed;
+            background-image: radial-gradient(circle at 10% 20%, rgba(124, 169, 130, 0.1) 0%, transparent 40%),
+                              radial-gradient(circle at 90% 80%, rgba(224, 122, 95, 0.1) 0%, transparent 40%);
+            font-family: 'Quicksand', sans-serif, system-ui;
+            color: #335c67;
+        }
+
+        .fruit-card {
+            width: 90%;
+            max-width: 380px;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border-radius: 40px;
+            padding: 30px;
+            border: 2px solid white;
+            box-shadow: 0 20px 40px rgba(124, 169, 130, 0.2);
+            text-align: center;
+            position: relative;
+        }
+
+        /* UPDATED HEADER NAVIGATION */
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .back-btn {
+            color: var(--leaf-green);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-3px);
+            color: var(--berry-red);
+        }
+
+        .profile-link {
+            text-decoration: none;
+        }
+
+        .profile-border {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            padding: 2px;
+            background: linear-gradient(to bottom right, var(--leaf-green), var(--berry-red));
+            transition: 0.3s;
+        }
+
+        .profile-border:hover {
+            transform: scale(1.1);
+        }
+
+        .profile-border img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: white;
+            object-fit: cover;
+        }
+
+        /* UI ELEMENTS */
+        .fruit-hub {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .fruit-hub i {
+            font-size: 3rem;
+            color: var(--berry-red);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        h1 { font-size: 1.5rem; font-weight: 700; color: #2d3142; margin-bottom: 8px; }
+        .tagline { font-size: 0.8rem; color: var(--leaf-green); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+
+        .fruit-list { text-align: left; margin-bottom: 25px; }
+
+        .fruit-item {
+            background: white;
+            padding: 12px 15px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            border: 1px solid rgba(124, 169, 130, 0.1);
+        }
+
+        .fruit-name { font-weight: 700; display: flex; align-items: center; gap: 10px; }
+        .fruit-name i { color: var(--leaf-green); }
+        .potassium-tag { font-size: 0.65rem; background: #fdf0d5; padding: 4px 8px; border-radius: 10px; font-weight: 800; }
+
+        .harvest-btn {
+            width: 100%;
+            background: var(--leaf-green);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(124, 169, 130, 0.3);
+        }
+
+        .harvest-btn:hover { background: #6b9671; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+    <div class="fruit-card">
+        <div class="card-header">
+            <!-- ARROW GOES TO GALLERY -->
+            <a href="index.html#gallery" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            
+            <!-- IMG GOES TO HOME -->
+            <a href="index.html#home" class="profile-link">
+                <div class="profile-border">
+                    <img src="pfp.jpg" alt="User" onerror="this.src='https://ui-avatars.com/api/?name=F&background=7ca982&color=fff'">
+                </div>
+            </a>
+        </div>
+
+        <div class="fruit-hub">
+            <i class="fas fa-apple-alt"></i>
+        </div>
+
+        <h1>Gentle Harvest</h1>
+        <p class="tagline">Low-Potassium Choice</p>
+
+        <div class="fruit-list">
+            <div class="fruit-item">
+                <div class="fruit-name"><i class="fas fa-check-circle"></i> Red Apples</div>
+                <span class="potassium-tag">Pectin Support</span>
+            </div>
+            <div class="fruit-item">
+                <div class="fruit-name"><i class="fas fa-check-circle"></i> Strawberries</div>
+                <span class="potassium-tag">Low-K Count</span>
+            </div>
+            <div class="fruit-item">
+                <div class="fruit-name"><i class="fas fa-check-circle"></i> Grapes</div>
+                <span class="potassium-tag">Hydration Hub</span>
+            </div>
+        </div>
+
+        <button class="harvest-btn" onclick="alert('Snack logged! Your kidneys thank you for the gentle choice.')">
+            Add to My Diet
+        </button>
+    </div>
+
+</body>
+</html>

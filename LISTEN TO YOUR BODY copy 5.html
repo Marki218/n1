@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kidney Awareness Pro | Remodeled</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, #2c5364 0%, #0f2027 100%);
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        /* DYNAMIC BACKGROUND */
+        body::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(0, 198, 255, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: move 20s linear infinite;
+        }
+
+        @keyframes move {
+            from { transform: translateY(0); }
+            to { transform: translateY(-400px); }
+        }
+
+        /* PREMIUM GLASS CARD */
+        .card {
+            width: 100%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 35px;
+            padding: 50px 30px 40px; /* Adjusted top padding for nav */
+            text-align: center;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        /* TOP NAVIGATION AREA */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: #0077b6;
+            font-size: 0.8rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .back-link:hover { color: #00c6ff; transform: translateX(-3px); }
+
+        .profile-link img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            border: 2px solid #00c6ff;
+            transition: 0.3s;
+        }
+
+        .profile-link img:hover { transform: scale(1.1); }
+
+        .alert-badge {
+            background: #d90429;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.65rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(0.95); opacity: 0.8; }
+        }
+
+        /* RADAR HUB */
+        .radar-hub {
+            width: 130px;
+            height: 130px;
+            margin: 20px auto 15px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .radar-circle::after {
+            content: "";
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border-top: 4px solid #00c6ff;
+            animation: rotate 2.5s linear infinite;
+        }
+
+        @keyframes rotate { to { transform: rotate(360deg); } }
+
+        .icon-main {
+            font-size: 3rem;
+            color: #0077b6;
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            10% { transform: scale(1.1); }
+            20% { transform: scale(1); }
+        }
+
+        /* CONTENT */
+        h1 { color: #023e8a; font-size: 1.5rem; font-weight: 900; margin-top: 10px; }
+        .subtitle { color: #0077b6; font-weight: 700; font-size: 0.75rem; letter-spacing: 1px; margin-bottom: 15px; }
+        
+        .warning-box {
+            background: rgba(217, 4, 41, 0.08);
+            border: 1px solid rgba(217, 4, 41, 0.2);
+            color: #d90429;
+            padding: 8px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .grid-item {
+            background: linear-gradient(135deg, #0077b6, #00c6ff);
+            color: white;
+            padding: 12px 8px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .timeline {
+            text-align: left;
+            border-left: 2px solid #00c6ff;
+            margin: 0 0 20px 10px;
+            padding-left: 15px;
+        }
+
+        .step { margin-bottom: 8px; font-size: 0.8rem; color: #444; font-weight: 600; }
+
+        .cta-button {
+            width: 100%;
+            background: #023e8a;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50px;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .cta-button:hover { background: #00c6ff; transform: translateY(-2px); }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <!-- NAVIGATION HEADER -->
+        <div class="top-nav">
+            <!-- BACK BUTTON -->
+            <a href="index.html#home" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back
+            </a>
+            
+            <div class="alert-badge">⚠️ Active</div>
+
+            <a href="index.html#gallery" class="profile-link">
+                <img src="pfp.jpg" alt="Logo" onerror="this.src='https://ui-avatars.com/api/?name=K&background=00c6ff&color=fff'">
+            </a>
+        </div>
+
+        <!-- RADAR HUB -->
+        <div class="radar-hub">
+            <div class="radar-circle" style="position: absolute; inset: 0; border: 2px solid rgba(0, 198, 255, 0.1); border-radius: 50%;"></div>
+            <div class="icon-main">
+                <i class="fas fa-stethoscope"></i>
+            </div>
+        </div>
+
+        <h1>BODY MONITOR</h1>
+        <p class="subtitle">Kidney Defense System</p>
+        
+        <div class="warning-box">
+            <i class="fas fa-exclamation-triangle"></i> STAGNATION DETECTED
+        </div>
+
+        <div class="grid">
+            <div class="grid-item"><i class="fas fa-walking"></i> Circulation</div>
+            <div class="grid-item"><i class="fas fa-heart"></i> BP Control</div>
+            <div class="grid-item"><i class="fas fa-vial"></i> Salt Balance</div>
+            <div class="grid-item"><i class="fas fa-shield-virus"></i> Filtration</div>
+        </div>
+
+        <div class="timeline">
+            <div class="step">Phase 1: Hourly Stretch</div>
+            <div class="step">Phase 2: Active Walk</div>
+            <div class="step">Phase 3: Deep Hydration</div>
+        </div>
+
+        <button class="cta-button" onclick="alert('Syncing Awareness Data...')">
+            Sync Awareness
+        </button>
+    </div>
+
+</body>
+</html>

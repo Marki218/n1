@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>About 1 PAG-ASA</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+
+body{
+     background: linear-gradient(135deg, #e92828, #000000);
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/* NAVBAR */
+.navbar{
+    font-weight:bold;
+    background: linear-gradient(90deg,#c40000,#ff3b3b);
+}
+
+/* HERO */
+.hero{
+    background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("poster1.jpg");
+    background-size:cover;
+    background-position:center;
+    height:60vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    text-align:center;
+}
+
+/* CORE SECTION */
+.core-section{
+    background:white;
+    padding:80px 20px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    position:relative;
+    overflow:hidden;
+}
+
+/* DESIGN CIRCLES */
+.core-section::before{
+    content:"";
+    position:absolute;
+    top:-100px;
+    left:-100px;
+    width:400px;
+    height:400px;
+    background:#c40000;
+    border-radius:50%;
+    opacity:0.15;
+}
+
+.core-section::after{
+    content:"";
+    position:absolute;
+    bottom:-120px;
+    right:-120px;
+    width:350px;
+    height:350px;
+    background:#ff0000;
+    border-radius:50%;
+    opacity:0.15;
+}
+
+/* TITLE */
+.ultra-title{
+    font-size:48px;
+    color:#7b0000;
+    letter-spacing:2px;
+}
+
+/* FLIP CARD */
+.flip-card{
+    perspective:1000px;
+    height:250px;
+}
+
+.flip-inner{
+    position:relative;
+    width:100%;
+    height:100%;
+    transition: transform 0.6s;
+    transform-style:preserve-3d;
+}
+
+.flip-card:hover .flip-inner{
+    transform: rotateY(180deg);
+}
+
+/* FRONT & BACK */
+.flip-front, .flip-back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:20px;
+    backface-visibility:hidden;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+/* FRONT STYLE */
+.flip-front{
+    background: linear-gradient(135deg,#ffffff,#f1f1f1);
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* BACK STYLE */
+.flip-back{
+    background: linear-gradient(135deg,#dc3545,#a30000);
+    color:white;
+    transform: rotateY(180deg);
+    box-shadow:0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* ICON */
+.icon{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+/* PULSE ANIMATION */
+.pulse{
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.2);}
+    100%{transform:scale(1);}
+}
+
+/* TEXT */
+.flip-front h4{
+    font-weight:700;
+}
+
+.flip-front span{
+    color:#dc3545;
+}
+
+.flip-back p{
+    font-size:14px;
+    line-height:1.6;
+}
+
+/* BACKGROUND */
+body{
+    background: linear-gradient(to right,#f8f9fa,#eef2f3);
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm sticky-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="campaign.html">
+            <img src="pfp.jpg" alt="Logo" style="height:40px; border-radius: 50%; margin-right:10px;">
+            1 PAG-ASA
+        </a>
+
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a class="nav-link text-white" href="index.html">Home</a>
+            </li>
+        </ul>
+    </div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+    <h1 data-aos="fade-up">About 1 PAG-ASA</h1>
+    <p data-aos="fade-up" data-aos-delay="200">Kidney Awareness Campaign</p>
+</div>
+</section>
+
+<section class="container my-5">
+
+<h1 class="text-center fw-bold mb-2 ultra-title" data-aos="fade-down">CORE VALUES</h1>
+<h5 class="text-center text-danger mb-5" data-aos="fade-down">(PICA)</h5>
+
+<div class="row g-4">
+
+<!-- P -->
+<div class="col-md-3">
+<div class="flip-card" data-aos="zoom-in">
+<div class="flip-inner">
+
+<div class="flip-front">
+<div class="icon pulse">👥</div>
+<h4><span>P</span>eople-Centered</h4>
+</div>
+
+<div class="flip-back">
+<p>
+  We are people-centered.  
+  We prioritize the needs and well-  
+  being of the people we serve.
+</p>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- I -->
+<div class="col-md-3">
+<div class="flip-card" data-aos="zoom-in" data-aos-delay="100">
+<div class="flip-inner">
+
+<div class="flip-front">
+<div class="icon pulse">⚖️</div>
+<h4><span>I</span>ntegrity</h4>
+</div>
+
+<div class="flip-back">
+<p>
+We value integrity.  
+  Whatever we do, we do it with  
+  honesty, fairness, and  
+  consistency.  
+</p>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- C -->
+<div class="col-md-3">
+<div class="flip-card" data-aos="zoom-in" data-aos-delay="200">
+<div class="flip-inner">
+
+<div class="flip-front">
+<div class="icon pulse">❤️</div>
+<h4><span>C</span>ompassion</h4>
+</div>
+
+<div class="flip-back">
+<p>
+We have compassion.  
+  We are sympathetic for patients  
+  who are suffering from chronic  
+  kidney disease. We desire to  
+  alleviate their suffering. 
+</p>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- A -->
+<div class="col-md-3">
+<div class="flip-card" data-aos="zoom-in" data-aos-delay="300">
+<div class="flip-inner">
+
+<div class="flip-front">
+<div class="icon pulse">📊</div>
+<h4><span>A</span>ccountability</h4>
+</div>
+
+<div class="flip-back">
+<p>
+  We act with accountability.  
+  We take ownership of our  
+  actions and are accountable for  
+  their outcomes.   
+</p>
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+</section>      
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+      <img src="pfp.jpg" alt="Logo" style="height:50px; border-radius: 50%; margin-bottom:15px; border: 1px solid #ff0000;">
+      <p>© 2026 1 PAG-ASA | Our Core Values
+      </p>
+    </div>
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+AOS.init({
+    duration:1000,
+    once:true
+});
+</script>
+
+</body>
+</html>         

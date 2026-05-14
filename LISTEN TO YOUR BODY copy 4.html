@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renal Flow OS | v4</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --neon: #00ffc3;
+            --bg-dark: #050505;
+            --card-glass: rgba(15, 15, 15, 0.8);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--bg-dark);
+            color: #fff;
+            overflow: hidden;
+        }
+
+        /* DYNAMIC FLOW BACKGROUND */
+        .bg-glow {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(0, 255, 195, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: float 12s infinite alternate;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0% { transform: translate(-30%, -30%); }
+            100% { transform: translate(30%, 20%); }
+        }
+
+        /* REMODELLED CARD */
+        .renal-card {
+            width: 90%;
+            max-width: 380px;
+            background: var(--card-glass);
+            backdrop-filter: blur(40px);
+            border-radius: 40px;
+            padding: 40px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 80px rgba(0,0,0,0.8);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* NAV HEADER */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover { color: var(--neon); }
+
+        .profile-ring {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            padding: 2px;
+            background: linear-gradient(var(--neon), transparent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-ring img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #000;
+            object-fit: cover;
+        }
+
+        /* THE CORE SENSOR */
+        .core-sensor {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 25px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 255, 195, 0.2);
+        }
+
+        .ring-1 { animation: pulse-ring 3s infinite; }
+        .ring-2 { animation: pulse-ring 3s infinite 1.5s; }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.8; }
+            100% { transform: scale(1.4); opacity: 0; }
+        }
+
+        .core-icon {
+            font-size: 3.2rem;
+            color: var(--neon);
+            filter: drop-shadow(0 0 15px var(--neon));
+        }
+
+        /* TYPOGRAPHY */
+        .brand-label {
+            font-size: 0.6rem;
+            color: var(--neon);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 900;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 200;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+        }
+
+        .status-msg {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .status-msg b { color: #ff4d4d; font-weight: 800; }
+
+        /* FLOW TIMELINE */
+        .flow-path {
+            text-align: left;
+            margin-bottom: 30px;
+            border-left: 1px solid rgba(0, 255, 195, 0.15);
+            padding-left: 20px;
+            margin-left: 10px;
+        }
+
+        .step {
+            position: relative;
+            margin-bottom: 18px;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .step::before {
+            content: "";
+            position: absolute;
+            left: -24px;
+            top: 5px;
+            width: 7px;
+            height: 7px;
+            background: var(--neon);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon);
+        }
+
+        .step b { color: var(--neon); display: block; margin-bottom: 2px; font-size: 0.8rem; }
+
+        /* NEON BUTTON */
+        .btn-flow {
+            width: 100%;
+            background: var(--neon);
+            color: #000;
+            border: none;
+            padding: 18px;
+            border-radius: 18px;
+            font-weight: 900;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+
+        .btn-flow:hover {
+            box-shadow: 0 0 40px rgba(0, 255, 195, 0.5);
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-glow"></div>
+
+    <div class="renal-card">
+        <!-- HEADER -->
+        <div class="header">
+            <a href="index.html#gallery" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Exit OS
+            </a>
+            <a href="index.html#home" class="profile-ring">
+                <img src="pfp.jpg" alt="User" onerror="this.src='https://ui-avatars.com/api/?name=R&background=000&color=00ffc3'">
+            </a>
+        </div>
+
+        <!-- SENSOR HUB -->
+        <div class="core-sensor">
+            <div class="ring ring-1"></div>
+            <div class="ring ring-2"></div>
+            <i class="fas fa-atom core-icon"></i>
+        </div>
+
+        <span class="brand-label">Bio-Sync Active</span>
+        <h1>Renal Flow</h1>
+        <p class="status-msg">System status: <b>Stagnant</b>. Micro-circulation in lower extremities has dropped below optimal levels.</p>
+
+        <!-- FLOW PATH -->
+        <div class="flow-path">
+            <div class="step">
+                <b>INITIALIZE</b>
+                Stand up and perform 10 calf raises to pump blood.
+            </div>
+            <div class="step">
+                <b>HYDRATE</b>
+                Intake 200ml H2O to facilitate waste filtration.
+            </div>
+            <div class="step">
+                <b>COMPLETE</b>
+                A 2-minute movement burst resets the timer.
+            </div>
+        </div>
+
+        <button class="btn-flow" onclick="alert('OS Syncing... Please stand up immediately.')">
+            Resume Bio-Flow
+        </button>
+    </div>
+
+</body>
+</html>

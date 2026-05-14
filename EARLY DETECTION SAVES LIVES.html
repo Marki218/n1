@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioFlow Interactive</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --accent: #10b981;
+            --accent-glow: rgba(16, 185, 129, 0.4);
+            --bg-deep: #0f172a;
+            --glass: rgba(30, 41, 59, 0.7);
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at top right, #1e293b, #0f172a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', system-ui, sans-serif;
+            color: white;
+            overflow: hidden;
+        }
+
+        /* BACKGROUND ELEMENTS */
+        .aura {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--accent);
+            filter: blur(150px);
+            opacity: 0.1;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        /* MAIN DASHBOARD */
+        .dashboard {
+            width: 100%;
+            max-width: 400px;
+            background: var(--glass);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 40px;
+            padding: 35px;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.5);
+        }
+
+        /* TOP DOCK */
+        .top-dock {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+            background: rgba(255,255,255,0.05);
+            padding: 8px 15px;
+            border-radius: 12px;
+        }
+
+        .nav-link:hover { color: var(--accent); background: rgba(255,255,255,0.1); }
+
+        .pfp-link img {
+            width: 40px;
+            height: 40px;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* CHRONO GAUGE */
+        .chrono-container {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 25px;
+        }
+
+        .chrono-svg {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+
+        .track { stroke: rgba(255,255,255,0.05); stroke-width: 8; fill: none; }
+        .progress-bar {
+            stroke: var(--accent);
+            stroke-width: 8;
+            stroke-linecap: round;
+            fill: none;
+            transition: stroke-dashoffset 0.5s ease;
+            filter: drop-shadow(0 0 8px var(--accent-glow));
+        }
+
+        .time-display {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .time-val { font-size: 2rem; font-weight: 900; letter-spacing: -1px; }
+        .time-label { font-size: 0.6rem; text-transform: uppercase; color: rgba(255,255,255,0.4); letter-spacing: 2px; }
+
+        /* TYPOGRAPHY */
+        h1 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; color: #f8fafc; }
+        .desc { font-size: 0.85rem; color: #94a3b8; line-height: 1.5; margin-bottom: 25px; }
+
+        /* GRID SYSTEM */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 12px;
+            border-radius: 18px;
+            text-align: left;
+        }
+
+        .stat-card i { color: var(--accent); margin-bottom: 8px; display: block; font-size: 1.1rem; }
+        .stat-card span { font-size: 0.7rem; font-weight: 600; color: #cbd5e1; }
+
+        /* CONTROL DOCK */
+        .controls {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 10px;
+        }
+
+        .action-btn {
+            border: none;
+            border-radius: 15px;
+            padding: 15px;
+            font-weight: 800;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-main { background: var(--accent); color: #064e3b; }
+        .btn-sec { background: rgba(255,255,255,0.08); color: white; }
+        .btn-danger { background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.2); }
+
+        .action-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="aura"></div>
+
+    <div class="dashboard">
+        <!-- TOP NAVIGATION -->
+        <div class="top-dock">
+            <a href="index.html#home" class="nav-link">
+                <i class="fas fa-chevron-left"></i> Home
+            </a>
+            <a href="index.html#gallery" class="pfp-link">
+                <img src="pfp.jpg" alt="User" onerror="this.src='https://ui-avatars.com/api/?name=R&background=1e293b&color=10b981'">
+            </a>
+        </div>
+
+        <!-- CHRONO RING -->
+        <div class="chrono-container">
+            <svg class="chrono-svg" viewBox="0 0 100 100">
+                <circle class="track" cx="50" cy="50" r="45"></circle>
+                <circle class="progress-bar" id="progress" cx="50" cy="50" r="45"></circle>
+            </svg>
+            <div class="time-display">
+                <div class="time-val" id="countdown">10:00</div>
+                <div class="time-label">Flow Time</div>
+            </div>
+        </div>
+
+        <h1>Renal Flow Sync</h1>
+        <p class="desc">Lower body activity triggers blood filtration. Start your 10-minute movement cycle now.</p>
+
+        <!-- STATS -->
+        <div class="stat-grid">
+            <div class="stat-card">
+                <i class="fas fa-walking"></i>
+                <span>Circulation</span>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-tint"></i>
+                <span>Hydration</span>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-heartbeat"></i>
+                <span>BP Logic</span>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-shield-alt"></i>
+                <span>Defense</span>
+            </div>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="controls">
+            <button class="action-btn btn-main" id="startBtn">Initialize</button>
+            <button class="action-btn btn-sec" id="pauseBtn"><i class="fas fa-pause"></i></button>
+            <button class="action-btn btn-danger" id="resetBtn"><i class="fas fa-redo"></i></button>
+        </div>
+    </div>
+
+    <script>
+        let total = 600;
+        let time = total;
+        let timer = null;
+
+        const countdown = document.getElementById("countdown");
+        const progress = document.getElementById("progress");
+
+        // SVG Circumference calculation (2 * PI * R) where R=45
+        const circumference = 2 * Math.PI * 45;
+        progress.style.strokeDasharray = circumference;
+
+        function updateUI(){
+            let min = Math.floor(time/60);
+            let sec = time%60;
+            countdown.textContent = `${min.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`;
+
+            let offset = circumference - (time/total)*circumference;
+            progress.style.strokeDashoffset = offset;
+        }
+
+        document.getElementById("startBtn").onclick = ()=>{
+            if(timer) return;
+            timer = setInterval(()=>{
+                time--;
+                updateUI();
+                if(time <= 0){
+                    clearInterval(timer);
+                    timer = null;
+                    alert("Bio-Flow Sequence Complete!");
+                }
+            }, 1000);
+        };
+
+        document.getElementById("pauseBtn").onclick = ()=>{
+            clearInterval(timer);
+            timer = null;
+        };
+
+        document.getElementById("resetBtn").onclick = ()=>{
+            clearInterval(timer);
+            timer = null;
+            time = total;
+            updateUI();
+        };
+
+        updateUI();
+    </script>
+
+</body>
+</html>
