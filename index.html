@@ -1,627 +1,1304 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Kidneys Alagaan Natin</title>
-    
-    <!-- CSS Libraries -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="1 PAG-ASA kidney awareness campaigns, health information, and educational videos.">
+        <meta name="theme-color" content="#8f1f25">
+        <title>Kidneys Alagaan Natin</title>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top"
-    style="background: linear-gradient(90deg, #b71c1c, #e53935);">
+        <!-- CSS Libraries -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
-    <div class="container">
+        <style>
+            :root {
+                --brand-red: #a1262d;
+                --brand-red-dark: #68151a;
+                --brand-green: #237044;
+                --brand-green-dark: #123e26;
+                --brand-gold: #c6a158;
+                --page-bg: #f7f5f0;
+                --surface: #ffffff;
+                --ink: #202a24;
+                --muted: #69746d;
+                --line: rgba(32, 42, 36, .11);
+                --soft-shadow: 0 9px 30px rgba(49, 38, 29, .08);
+                --strong-shadow: 0 22px 55px rgba(49, 34, 25, .16);
+            }
 
-        <!-- LOGO -->
-        <a class="navbar-brand d-flex align-items-center fw-bold" href="#hero">
+            * { box-sizing: border-box; }
+            [hidden] { display: none !important; }
+            :focus-visible { outline: 3px solid var(--brand-gold); outline-offset: 3px; }
+            html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+            body { min-width: 300px; overflow-x: hidden; color: var(--ink); background: var(--page-bg); font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+            section { position: relative; }
 
-            <img src="pfp.jpg"
-                alt="1 PAG-ASA Logo"
-                style="height:45px; width:auto; margin-right:12px; border-radius:50%;">
+            body.theme-dark { --page-bg: #0d1510; --surface: #152019; --ink: #f2f5f3; --muted: #a8b6ad; --line: rgba(255,255,255,.1); --soft-shadow: 0 9px 30px rgba(0,0,0,.2); --strong-shadow: 0 22px 55px rgba(0,0,0,.34); background: #0d1510; color: var(--ink); }
+            body.theme-dark #about, body.theme-dark #tips { background: #0d1510 !important; }
+            body.theme-dark #gallery { background: linear-gradient(145deg, #16150f, #0d1811); }
+            body.theme-dark .info-box, body.theme-dark .campaign-tools, body.theme-dark .video-tools, body.theme-dark .campaign-card, body.theme-dark #tips .card { background: var(--surface) !important; }
+            body.theme-dark .campaign-search, body.theme-dark .video-search { color: var(--ink); background: #0f1812; border-color: rgba(255,255,255,.13); }
+            body.theme-dark .campaign-card h5, body.theme-dark #tips .card h5, body.theme-dark .campaign-empty h5, body.theme-dark .video-empty h5 { color: var(--ink) !important; }
+            body.theme-dark .text-muted { color: var(--muted) !important; }
+            body.theme-dark .campaign-empty, body.theme-dark .video-empty { background: rgba(21,32,25,.92); border-color: rgba(255,255,255,.14); }
 
-            <span class="fs-4">1 PAG-ASA</span>
+            .scroll-progress { position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 3px; background: rgba(255,255,255,.08); pointer-events: none; }
+            .scroll-progress-bar { width: 0; height: 100%; background: linear-gradient(90deg, var(--brand-gold), #fff0b7, var(--brand-green)); box-shadow: 0 0 12px rgba(198,161,88,.45); transition: width .08s linear; }
+
+            .navbar { min-height: 76px; background: transparent !important; border-bottom: 1px solid transparent; transition: min-height .25s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease; }
+            .navbar.nav-scrolled { min-height: 66px; background: linear-gradient(100deg, rgba(83,14,20,.96), rgba(125,27,33,.95), rgba(13,46,27,.96)) !important; border-color: rgba(255,255,255,.12); box-shadow: 0 10px 30px rgba(40,8,11,.24) !important; backdrop-filter: blur(14px); }
+            .navbar-brand img { width: 47px !important; height: 47px !important; margin-right: 12px; object-fit: cover; border: 2px solid rgba(255,255,255,.86); border-radius: 50%; box-shadow: 0 4px 13px rgba(0,0,0,.18); }
+            .navbar-brand span { font-family: 'Playfair Display', Georgia, serif; letter-spacing: .015em; }
+            .navbar .nav-link { position: relative; color: rgba(255,255,255,.78) !important; border-radius: 9px; transition: .2s ease; }
+            .navbar .nav-link:hover, .navbar .nav-link:focus-visible { color: #fff !important; background: rgba(255,255,255,.09); outline: none; }
+            .navbar .nav-link.active { color: #fff !important; }
+            .navbar .nav-link.active::after { content: ''; position: absolute; left: .55rem; right: .55rem; bottom: .18rem; height: 2px; background: var(--brand-gold); border-radius: 99px; }
+            .theme-toggle { width: 42px; height: 42px; display: grid; place-items: center; color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.2); border-radius: 50%; cursor: pointer; transition: .2s ease; }
+            .theme-toggle:hover, .theme-toggle:focus-visible { color: var(--brand-red-dark); background: #fff; outline: none; transform: translateY(-2px); }
+
+            .hero { position: relative; z-index: 2; isolation: isolate; overflow: visible; min-height: clamp(590px, 82vh, 760px) !important; padding: 105px 1rem 120px; background: radial-gradient(circle at 62% 10%, rgba(255,255,255,.075), transparent 32rem), linear-gradient(112deg, #4c0c13 0%, #781820 46%, #0d2818 100%); }
+            .hero::before { content: ''; position: absolute; z-index: -1; inset: 0; opacity: .12; background-image: radial-gradient(rgba(255,255,255,.5) .8px, transparent .8px); background-size: 25px 25px; -webkit-mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,.55) 22%, transparent 48%); mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,.55) 22%, transparent 48%); }
+            .hero::after { content: ''; position: absolute; z-index: -1; width: 42rem; height: 42rem; top: -31rem; right: -7rem; border: 1px solid rgba(232,210,164,.2); border-radius: 50%; box-shadow: 0 0 0 4.5rem rgba(255,255,255,.018), 0 0 0 9rem rgba(255,255,255,.014); }
+            .hero-content { position: relative; z-index: 1; max-width: 940px; }
+            .hero-eyebrow { display: inline-flex; align-items: center; gap: .72rem; margin-bottom: 1.7rem; color: #e8ce8d; font-size: .72rem; font-weight: 800; letter-spacing: .19em; text-transform: uppercase; }
+            .hero-eyebrow::before, .hero-eyebrow::after { content: ''; width: 34px; height: 1px; background: currentColor; opacity: .72; }
+            .hero h1 { margin: 0 auto 1.35rem; font: 700 clamp(3.2rem, 6.1vw, 5.8rem)/.92 'Playfair Display', Georgia, serif; letter-spacing: -.05em; text-shadow: 0 9px 34px rgba(0,0,0,.19); text-wrap: balance; }
+            .hero h1 span { display: block; }
+            .hero .lead { max-width: 720px; margin: 0 auto; color: rgba(255,255,255,.82); font-size: clamp(1rem, 1.65vw, 1.18rem); line-height: 1.72; text-wrap: pretty; }
+            .hero-actions { position: absolute; z-index: 5; left: 50%; bottom: -33px; display: flex; align-items: center; width: min(420px, calc(100% - 2rem)); min-height: 66px; padding: .42rem; transform: translateX(-50%); background: #fffaf1; border: 1px solid rgba(198,161,88,.42); border-radius: 999px; box-shadow: 0 16px 42px rgba(43,24,18,.2); }
+            .hero-actions::before { content: ''; position: absolute; left: 50%; top: 15px; bottom: 15px; width: 1px; background: rgba(32,42,36,.12); }
+            .hero-actions .btn { position: relative; z-index: 1; min-width: 0; flex: 1; margin: 0 !important; padding: .8rem .7rem; color: var(--brand-red-dark); background: transparent !important; border: 0 !important; border-radius: 999px; box-shadow: none !important; font-size: .84rem; font-weight: 800; transition: .2s ease; }
+            .hero-actions .btn i { margin-right: .4rem; color: var(--brand-gold); }
+            .hero-actions .btn:hover, .hero-actions .btn:focus-visible { color: #fff; background: var(--brand-red) !important; outline: none; }
+            .hero-actions .btn:hover i, .hero-actions .btn:focus-visible i { color: #fff; }
+
+            #about { z-index: 1; padding-top: 7.2rem !important; padding-bottom: 5.5rem !important; }
+            #about > h2, #tips h2, .campaign-heading h2 { font-family: 'Playfair Display', Georgia, serif; letter-spacing: -.02em; }
+            #about > h2::after, #tips h2::after, .campaign-heading h2::after { content: ''; display: block; width: 68px; height: 4px; margin: .85rem auto 0; background: linear-gradient(90deg, var(--brand-red), var(--brand-gold), var(--brand-green)); border-radius: 99px; }
+            .info-box { height: 100%; background: rgba(255,255,255,.86); border: 1px solid var(--line); border-radius: 19px !important; box-shadow: var(--soft-shadow) !important; transition: .25s ease; }
+            .info-box:hover { transform: translateY(-6px); box-shadow: var(--strong-shadow) !important; }
+            .info-icon { width: 52px; height: 52px; margin: 0 auto 1rem; display: grid; place-items: center; color: #fff; background: linear-gradient(145deg, var(--brand-red), var(--brand-green)); border-radius: 16px; box-shadow: 0 9px 22px rgba(35,112,68,.18); font-size: 1.15rem; transform: rotate(-3deg); }
+            .info-box h3 { font-size: clamp(2rem,4vw,2.75rem); font-weight: 800; }
+            .info-box p { margin-bottom: 0; color: var(--muted); line-height: 1.65; }
+
+            #gallery { padding: 5.7rem 0; background: linear-gradient(145deg, #f4eee6, #f7faf6); }
+            .campaign-heading { max-width: 700px; margin: 0 auto 2rem; text-align: center; }
+            .campaign-heading p { color: var(--muted); }
+            .campaign-tools { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.5rem; padding: .72rem; background: rgba(255,255,255,.84); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--soft-shadow); backdrop-filter: blur(8px); }
+            .campaign-search-wrap { position: relative; flex: 1; }
+            .campaign-search-wrap > i { position: absolute; left: .95rem; top: 50%; transform: translateY(-50%); color: #747e77; pointer-events: none; }
+            .campaign-search { width: 100%; min-height: 46px; padding: .7rem 2.7rem .7rem 2.6rem; color: var(--ink); background: #fff; border: 1px solid rgba(32,42,36,.14); border-radius: 12px; outline: none; transition: .2s ease; }
+            .campaign-search:focus { border-color: var(--brand-gold); box-shadow: 0 0 0 4px rgba(198,161,88,.14); }
+            .clear-campaign-search { position: absolute; right: .4rem; top: 50%; width: 35px; height: 35px; display: none; place-items: center; transform: translateY(-50%); color: var(--muted); background: transparent; border: 0; border-radius: 50%; cursor: pointer; }
+            .clear-campaign-search.show { display: grid; }
+            .clear-campaign-search:hover { color: var(--brand-red); background: rgba(161,38,45,.08); }
+            .campaign-count { flex: 0 0 auto; padding: .6rem .9rem; color: var(--brand-green); background: rgba(35,112,68,.08); border: 1px solid rgba(35,112,68,.14); border-radius: 999px; font-size: .8rem; font-weight: 700; white-space: nowrap; }
+            .layout-toggle { width: 46px; height: 46px; display: grid; place-items: center; flex: 0 0 auto; color: var(--brand-green); background: rgba(35,112,68,.08); border: 1px solid rgba(35,112,68,.14); border-radius: 12px; cursor: pointer; transition: .2s ease; }
+            .layout-toggle:hover, .layout-toggle:focus-visible { color: #fff; background: var(--brand-green); outline: none; }
+            .campaign-card { position: relative; overflow: hidden; border: 1px solid rgba(198,161,88,.22) !important; border-radius: 18px; box-shadow: var(--soft-shadow) !important; transition: transform .27s ease, box-shadow .27s ease, border-color .27s ease; }
+            .campaign-card:hover { transform: translateY(-8px); border-color: rgba(198,161,88,.66) !important; box-shadow: var(--strong-shadow) !important; }
+            .campaign-card > a { display: block; overflow: hidden; background: #ebe7de; }
+            .campaign-card > a.poster-missing { height: 220px; display: grid; place-items: center; color: var(--muted); text-align: center; text-decoration: none; }
+            .campaign-card > a.poster-missing::after { content: 'Poster preview unavailable'; padding: 1rem; }
+            .campaign-card > a.poster-missing img { display: none; }
+            .campaign-card .card-img-top { width: 100%; height: 220px !important; object-fit: cover; transition: transform .45s ease, filter .3s ease; }
+            .campaign-card:hover .card-img-top { transform: scale(1.045); filter: brightness(.82); }
+            .campaign-card .card-body { display: flex; flex-direction: column; justify-content: center; min-height: 142px; padding: 1.15rem; }
+            .campaign-card h5 { margin-bottom: .55rem; color: var(--ink); font-size: .96rem; font-weight: 800; line-height: 1.35; }
+            .campaign-card p { margin: 0; color: var(--muted); font-size: .82rem; line-height: 1.55; }
+            .campaign-index { position: absolute; z-index: 3; left: 12px; top: 12px; min-width: 38px; padding: .33rem .5rem; color: #fff; background: rgba(104,21,26,.88); border: 1px solid rgba(255,255,255,.18); border-radius: 999px; font-size: .68rem; font-weight: 800; letter-spacing: .08em; text-align: center; backdrop-filter: blur(7px); }
+            .campaign-open { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; align-self: center; margin-top: .9rem; padding: .55rem .8rem; color: var(--brand-green); background: rgba(35,112,68,.08); border: 1px solid rgba(35,112,68,.14); border-radius: 999px; font-size: .74rem; font-weight: 800; text-decoration: none; transition: .2s ease; }
+            .campaign-open:hover { color: #fff; background: var(--brand-green); }
+            .quick-preview { position: absolute; z-index: 3; top: 12px; right: 12px; width: 42px; height: 42px; display: grid; place-items: center; color: var(--brand-red-dark); background: rgba(255,255,255,.94); border: 1px solid rgba(255,255,255,.7); border-radius: 50%; box-shadow: 0 7px 20px rgba(0,0,0,.18); cursor: pointer; opacity: 0; transform: translateY(-5px); transition: .22s ease; }
+            .campaign-card:hover .quick-preview, .quick-preview:focus-visible { opacity: 1; transform: translateY(0); }
+            .quick-preview:hover { color: #fff; background: var(--brand-red); }
+            .campaign-empty { display: none; padding: 4rem 1rem; color: var(--muted); background: rgba(255,255,255,.66); border: 1px dashed rgba(32,42,36,.22); border-radius: 18px; text-align: center; }
+            .campaign-empty.show { display: block; }
+            #campaignGrid.campaign-list > .campaign-item { width: 100%; }
+            #campaignGrid.campaign-list .campaign-card { display: grid; grid-template-columns: minmax(240px, 38%) 1fr; min-height: 230px; }
+            #campaignGrid.campaign-list .campaign-card > a { height: 100%; }
+            #campaignGrid.campaign-list .campaign-card .card-img-top { height: 100% !important; min-height: 230px; }
+            #campaignGrid.campaign-list .campaign-card .card-body { align-items: flex-start; min-height: 230px; padding: 1.6rem; text-align: left !important; }
+            #campaignGrid.campaign-list .campaign-open { align-self: flex-start; }
+
+            #tips { padding-top: 5.7rem !important; padding-bottom: 5.7rem !important; background: linear-gradient(135deg, #fff5f5 0%, #f0fff4 100%); }
+            #tips > .container > p { color: var(--muted); }
+            #tips .card { overflow: hidden; border: 1px solid var(--line) !important; border-radius: 18px; box-shadow: var(--soft-shadow) !important; transition: .25s ease; }
+            #tips .card:hover { transform: translateY(-6px); box-shadow: var(--strong-shadow) !important; }
+            #tips video { width: 100%; height: 100%; object-fit: cover; background: #111; }
+            #tips .card-body { padding: 1.15rem; }
+            #tips .card-body p { color: var(--muted); font-size: .88rem; line-height: 1.6; }
+            .video-tools { display: flex; align-items: center; gap: .75rem; max-width: 850px; margin: 0 auto 1.5rem; padding: .72rem; background: rgba(255,255,255,.82); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--soft-shadow); }
+            .video-search-wrap { position: relative; flex: 1; }
+            .video-search-wrap > i { position: absolute; left: .95rem; top: 50%; transform: translateY(-50%); color: #747e77; pointer-events: none; }
+            .video-search { width: 100%; min-height: 46px; padding: .7rem 2.7rem .7rem 2.6rem; color: var(--ink); background: #fff; border: 1px solid rgba(32,42,36,.14); border-radius: 12px; outline: none; transition: .2s ease; }
+            .video-search:focus { border-color: var(--brand-gold); box-shadow: 0 0 0 4px rgba(198,161,88,.14); }
+            .clear-video-search { position: absolute; right: .4rem; top: 50%; width: 35px; height: 35px; display: none; place-items: center; transform: translateY(-50%); color: var(--muted); background: transparent; border: 0; border-radius: 50%; cursor: pointer; }
+            .clear-video-search.show { display: grid; }
+            .video-count { flex: 0 0 auto; padding: .6rem .9rem; color: var(--brand-red); background: rgba(161,38,45,.08); border: 1px solid rgba(161,38,45,.13); border-radius: 999px; font-size: .8rem; font-weight: 700; white-space: nowrap; }
+            .video-index { position: absolute; z-index: 2; left: 12px; right: auto; top: 12px; bottom: auto; width: auto !important; height: auto !important; padding: .32rem .5rem; color: #fff; background: rgba(18,62,38,.88); border: 1px solid rgba(255,255,255,.18); border-radius: 999px; font-size: .68rem; font-weight: 800; letter-spacing: .07em; backdrop-filter: blur(7px); }
+            .video-empty { display: none; max-width: 850px; margin: auto; padding: 3.5rem 1rem; color: var(--muted); background: rgba(255,255,255,.62); border: 1px dashed var(--line); border-radius: 18px; text-align: center; }
+            .video-empty.show { display: block; }
+            .video-load-error { position: relative; }
+            .video-load-error::after { content: 'Video unavailable. Check the file name and location.'; position: absolute; inset: 0; display: grid; place-items: center; padding: 1rem; color: #fff; background: rgba(17,23,19,.92); text-align: center; font-size: .82rem; }
+
+            .footer { position: relative; overflow: hidden; padding-top: 3.5rem !important; padding-bottom: 2.3rem !important; background: linear-gradient(125deg, var(--brand-red-dark), var(--brand-green-dark)) !important; }
+            .footer::before { content: ''; position: absolute; inset: 0; opacity: .06; background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 20px 20px; }
+            .footer .container { position: relative; }
+            .footer img { width: 54px !important; height: 54px !important; margin-right: 10px; object-fit: cover; border: 2px solid rgba(255,255,255,.85); border-radius: 50%; }
+            .social-links a { display: inline-grid; place-items: center; width: 46px; height: 46px; margin: 0 .25rem !important; border: 1px solid rgba(255,255,255,.18); border-radius: 50%; text-decoration: none; transition: .2s ease; }
+            .social-links a:hover { color: var(--brand-red-dark) !important; background: #fff; transform: translateY(-3px); }
+            .social-links i { font-size: 1.25rem !important; }
+
+            .floating-top-btn { position: fixed; z-index: 1040; right: 1rem; bottom: 1rem; width: 50px; height: 50px; display: grid; place-items: center; color: #fff; background: var(--brand-red); border: 0; border-radius: 50%; box-shadow: 0 10px 28px rgba(104,21,26,.3); text-decoration: none; opacity: 0; pointer-events: none; transform: translateY(18px); transition: .25s ease; }
+            .floating-top-btn.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+            .floating-top-btn:hover { color: #fff; background: var(--brand-green); transform: translateY(-3px); }
+
+            #imageModal .modal-content { overflow: hidden; color: #fff; background: #111713; border: 1px solid rgba(255,255,255,.1); border-radius: 20px; box-shadow: 0 28px 85px rgba(0,0,0,.5); }
+            #imageModal .modal-header { border-color: rgba(255,255,255,.1); }
+            #imageModal .modal-body { position: relative; min-height: 60vh; display: grid; place-items: center; padding: 1rem; background: radial-gradient(circle, #28342c, #111713 70%); }
+            #modalImg { max-width: 100%; max-height: 72vh; object-fit: contain; box-shadow: 0 18px 55px rgba(0,0,0,.45); transition: opacity .2s ease; }
+            .preview-loader { position: absolute; left: 50%; top: 50%; width: 42px; height: 42px; margin: -21px; border: 3px solid rgba(255,255,255,.18); border-top-color: var(--brand-gold); border-radius: 50%; animation: preview-spin .75s linear infinite; }
+            .preview-loader[hidden] { display: none; }
+            @keyframes preview-spin { to { transform: rotate(360deg); } }
+            .preview-nav { position: absolute; z-index: 2; top: 50%; width: 46px; height: 46px; display: grid; place-items: center; transform: translateY(-50%); color: #fff; background: rgba(0,0,0,.4); border: 1px solid rgba(255,255,255,.22); border-radius: 50%; cursor: pointer; backdrop-filter: blur(7px); }
+            .preview-nav:hover { color: var(--brand-red-dark); background: #fff; }
+            .preview-prev { left: 1rem; }
+            .preview-next { right: 1rem; }
+            .preview-count { color: rgba(255,255,255,.58); font-size: .78rem; }
+            .preview-fullscreen { width: 40px; height: 40px; display: grid; place-items: center; margin-left: auto; color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); border-radius: 50%; cursor: pointer; }
+            #imageModal .modal-content:fullscreen { width: 100vw; height: 100vh; border-radius: 0; }
+            #imageModal .modal-content:fullscreen .modal-body { flex: 1 1 auto; }
+
+            @media (max-width: 991.98px) {
+                .navbar-collapse { margin-top: .7rem; padding: .75rem; background: rgba(64,13,17,.62); border: 1px solid rgba(255,255,255,.1); border-radius: 14px; }
+                .navbar .nav-link.active::after { display: none; }
+            }
+            @media (max-width: 767.98px) {
+                .hero { min-height: 590px !important; padding: 95px .6rem 110px; }
+                .hero h1 { font-size: clamp(2rem,9vw,3.3rem); line-height: .96; }
+                .hero .lead { max-width: 320px; }
+                .hero-actions .btn { padding-inline: .35rem; font-size: .77rem; }
+                .campaign-tools { flex-wrap: wrap; }
+                .campaign-search-wrap { flex-basis: 100%; }
+                .campaign-count { flex: 1 1 auto; text-align: center; }
+                .quick-preview { opacity: 1; transform: none; }
+                #campaignGrid.campaign-list .campaign-card { grid-template-columns: 1fr; }
+                #campaignGrid.campaign-list .campaign-card > a { height: auto; }
+                #campaignGrid.campaign-list .campaign-card .card-img-top { height: 220px !important; min-height: 0; }
+                #campaignGrid.campaign-list .campaign-card .card-body { min-height: 0; padding: 1.15rem; text-align: center !important; align-items: center; }
+                .video-tools { flex-wrap: wrap; }
+                .video-search-wrap { flex-basis: 100%; }
+                .video-count { width: 100%; text-align: center; }
+                #imageModal .modal-body { min-height: 55vh; }
+                .preview-prev { left: .5rem; }
+                .preview-next { right: .5rem; }
+            }
+            @media (prefers-reduced-motion: reduce) {
+                *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress-bar" id="scrollProgressBar"></div></div>
+        <nav class="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top" aria-label="Primary navigation">
+
+        <div class="container">
+
+            <!-- LOGO -->
+            <a class="navbar-brand d-flex align-items-center fw-bold" href="#home">
+
+                <img src="pfp.jpg" alt="1 PAG-ASA Logo" width="48" height="48" decoding="async">
+
+                <span class="fs-4">1 PAG-ASA</span>
+            </a>
+
+            <!-- TOGGLER -->
+            <button class="navbar-toggler border-0 shadow-none"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#nav"
+                aria-controls="nav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- NAV LINKS -->
+            <div class="collapse navbar-collapse" id="nav">
+
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+
+    <li class="nav-item">
+                        <a class="nav-link active fw-semibold" href="#gallery">
+                            Campaign
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="#tips">
+                            Health Tips
+                        </a>
+                    </li>
+            <li class="nav-item">
+        <!-- Use a custom class 'nav-animate' if you want to apply specific hover effects -->
+        <a class="nav-link fw-semibold nav-animate" href="campaign.html">
+            <i class="fas fa-info-circle me-1"></i> About Us
         </a>
+    </li>
+                    <li class="nav-item ms-lg-1 d-flex align-items-center">
+                        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Use dark theme" title="Change theme">
+                            <i class="fas fa-moon" aria-hidden="true"></i>
+                        </button>
+                    </li>
+                </ul>
 
-        <!-- TOGGLER -->
-        <button class="navbar-toggler border-0 shadow-none"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#nav">
+            </div>
+        </div>
+    </nav>
 
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <!-- HERO -->
 
-        <!-- NAV LINKS -->
-        <div class="collapse navbar-collapse" id="nav">
+        <section id="home" class="hero min-vh-100 d-flex align-items-center">
+            <div class="container text-center text-white hero-content">
+                <span class="hero-eyebrow" data-aos="fade-down">#KidneysAlagaanNatin</span>
+                <h1 data-aos="fade-up"><span>Protect your kidneys.</span><span>Protect your life.</span></h1>
+                <p class="lead" data-aos="fade-up" data-aos-delay="200">
+                    Healthy kidneys mean a healthier future.
+                </p>
+            </div>
+            <nav class="hero-actions" aria-label="Featured page links">
+                <a href="#about" class="btn"><i class="fas fa-heart-pulse" aria-hidden="true"></i>Learn More</a>
+                <a href="#gallery" class="btn"><i class="fas fa-layer-group" aria-hidden="true"></i>View Campaigns</a>
+            </nav>
+        </section>
 
-            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+        <!-- ABOUT -->
+        <section id="about" class="container py-5">
+            <h2 class="text-center mb-5 fw-bold">Kidney Awareness</h2>
+            <div class="row text-center g-4">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="info-box p-4 rounded shadow">
+                        <div class="info-icon"><i class="fas fa-earth-asia" aria-hidden="true"></i></div>
+                        <h3 class="text-success">850M+</h3>
+                        <p>People worldwide suffer from kidney disease.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="info-box p-4 rounded shadow">
+                        <div class="info-icon"><i class="fas fa-users" aria-hidden="true"></i></div>
+                        <h3 class="text-success">1 in 10</h3>
+                        <p>Adults globally may develop kidney disease.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="info-box p-4 rounded shadow">
+                        <div class="info-icon"><i class="fas fa-shield-heart" aria-hidden="true"></i></div>
+                        <h3 class="text-success">Early Care</h3>
+                        <p>Prevention and early diagnosis save lives.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                <li class="nav-item">
-                    <a class="nav-link active fw-semibold" href="#gallery">
-                        Campaign
-                    </a>
-                </li>
+        <!-- CAMPAIGN -->
+    <section id="gallery">
+    <div class="container">
+        <div class="campaign-heading" data-aos="fade-up">
+            <h2 class="fw-bold">Kidney Awareness Campaigns</h2>
+            <p>Explore our educational campaigns and practical reminders for healthier kidneys.</p>
+        </div>
 
-                <li class="nav-item">
-                    <a class="nav-link fw-semibold" href="#tips">
-                        Health Tips
-                    </a>
-                </li>
-           <li class="nav-item">
-    <!-- Use a custom class 'nav-animate' if you want to apply specific hover effects -->
-    <a class="nav-link fw-semibold nav-animate" href="campaign.html">
-        <i class="fas fa-info-circle me-1"></i> About Us
+        <div class="campaign-tools" role="search" aria-label="Search kidney awareness campaigns">
+            <div class="campaign-search-wrap">
+                <i class="fas fa-search" aria-hidden="true"></i>
+                <label class="visually-hidden" for="campaignSearch">Search campaigns</label>
+                <input class="campaign-search" id="campaignSearch" type="search" placeholder="Search campaigns..." autocomplete="off">
+                <button class="clear-campaign-search" id="clearCampaignSearch" type="button" aria-label="Clear campaign search"><i class="fas fa-times"></i></button>
+            </div>
+            <span class="campaign-count" id="campaignCount" aria-live="polite">15 campaigns</span>
+            <button class="layout-toggle" id="campaignLayoutToggle" type="button" aria-label="Use list layout" aria-pressed="false" title="Change campaign layout"><i class="fas fa-list" aria-hidden="true"></i></button>
+        </div>
+
+        <div class="row g-4" id="campaignGrid">
+
+        <!-- 1 -->
+        <div class="col-md-4" data-aos="zoom-in">
+            <div class="card campaign-card shadow h-100">
+                <a href="campaign.html">
+                    <img src="poster1.jpg" class="card-img-top" alt="All About 1PAGASA campaign poster">
+                </a>
+                <div class="card-body text-center">
+                    <h5>ALL ABOUT 1 PAG-ASA</h5>
+                    <p>LEARN ABOUT KIDNEY AWARENESS.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+            <div class="card campaign-card shadow h-100">
+                <a href="HEALTHY LIFESTYLE..html">
+                <img src="poster2.jpg" class="card-img-top" alt="Healthy Lifestyle campaign poster">
+                </a>
+                <div class="card-body text-center">
+                    <h5>HEALTHY LIFESTYLE</h5>
+                    <p>EXERCISE, PROPER DIET, AND LOW SALT INTAKE.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+            <div class="card campaign-card shadow h-100">
+                <a href="EARLY DETECTION.html">
+                <img src="poster3.jpg" class="card-img-top" alt="Early Detection campaign poster">
+                </a>
+                <div class="card-body text-center">
+                    <h5>EARLY DETECTION</h5>
+                    <p>REGULAR SCREENINGS CAN SAVE LIVES.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="col-md-4" data-aos="zoom-in">
+            <div class="card campaign-card shadow h-100">
+                <a href="MOVING FOR 10 MINUTES.html">
+                <img src="poster 4.png" class="card-img-top" alt="Moving for 10 Minutes campaign poster">
+                </a>
+                <div class="card-body text-center">
+                    <h5>MOVING FOR 10 MINUTES</h5>
+                    <p>COMMUNITY-BASED KIDNEY AWARENESS.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+            <div class="card campaign-card shadow h-100">
+                <a href="Kidney Alert Too Much Sitting.html">
+                <img src="poster 5.png" class="card-img-top" alt="Too Much Sitting campaign poster">
+                </a>
+                <div class="card-body text-center">
+                        <h5>TOO MUCH SITTING</h5>
+                        <p>LEARN WHY REGULAR MOVEMENT SUPPORTS OVERALL HEALTH.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+            <div class="card campaign-card shadow h-100">
+                <a href="LISTEN TO YOUR BODY copy 2.html">
+                <img src="poster 6.png" class="card-img-top" alt="Listen to Your Body campaign poster">
+                </a>
+                <div class="card-body text-center">
+                    <h5>LISTEN TO YOUR BODY</h5>
+                    <p>EARLY DETECTION SAVES LIVES.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="col-md-4" data-aos="zoom-in">
+            <div class="card campaign-card shadow h-100">
+                <a href="WHAT YOU EAT AFFECTS YOUR KIDNEYS.html">
+                <img src="poster 7.png" class="card-img-top" alt="What You Eat Affects Your Kidneys campaign poster">
+                </a>
+                <div class="card-body text-center">
+                    <h5>WHAT YOU EAT AFFECTS YOUR KIDNEYS</h5>
+                    <p>TAKING CARE OF YOUR KIDNEYS IS IMPORTANT.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+            <div class="card campaign-card shadow h-100">
+                <a href="LISTEN TO YOUR BODY copy 6.html">
+                <img src="poster 8.png" class="card-img-top" alt="Your Kidney Health campaign poster">
+                </a>
+                <div class="card-body text-center">
+                    <h5>YOUR KIDNEY HEALTH</h5>
+                    <p>YOUR FOOD CHOICES MATTER.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+            <div class="card campaign-card shadow h-100">
+                <a href="YOUR KIDNEY FEEL.html">
+                <img src="poster 9.png" class="card-img-top" alt="Your Kidneys Feel Your Choices campaign poster">
+                </a>
+                <div class="card-body text-center">
+                    <h5>YOUR KIDNEYS FEEL YOUR CHOICES</h5>
+                    <p>ENCOURAGE HEALTHY HABITS.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="col-md-4" data-aos="zoom-in">
+            <div class="card campaign-card shadow h-100">
+                <a href="LISTEN TO YOUR BODY copy 4.html">
+                <img src="poster 10.png" class="card-img-top" alt="Notice Changes Act Early campaign poster">
+                </a>
+                <div class="card-body text-center">
+                    <h5>NOTICE CHANGES, ACT EARLY</h5>
+                    <p>RECOGNIZE THE SIGNS AND TAKE ACTION.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 11 -->
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+            <div class="card campaign-card shadow h-100">
+                <a href="LISTEN TO YOUR BODY copy 6.html">
+                <img src="poster 11.png" class="card-img-top" alt="Listen to Your Body in the Morning campaign poster">
+                </a>
+                <div class="card-body text-center">
+                    <h5>LISTEN TO YOUR BODY IN THE MORNING</h5>
+                    <p>MORNING SIGNS MATTER.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 12 -->
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+            <div class="card campaign-card shadow h-100">
+                <a href="LISTEN TO YOUR BODY copy 6.html">
+                <img src="poster 12.png" class="card-img-top" alt="Water First Coffee Later campaign poster">
+                </a>
+                <div class="card-body text-center">
+                    <h5>WATER FIRST, COFFEE LATER</h5>
+                    <p>START YOUR MORNING WITH WATER.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 13 -->
+        <div class="col-md-4" data-aos="zoom-in">
+            <div class="card campaign-card shadow h-100">
+                <a href="LISTEN TO YOUR BODY copy 3.html">
+                <img src="poster 13.png" class="card-img-top" alt="A Gentle Fruit for Your Kidneys campaign poster">
+                </a>
+                <div class="card-body text-center">
+                    <h5>A GENTLE FRUIT FOR YOUR KIDNEYS</h5>
+                    <p>HEALTHY HABITS SUPPORT OVERALL WELLNESS.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 14 -->
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+            <div class="card campaign-card shadow h-100">
+                <a href="LISTEN TO YOUR BODY copy 4.html">
+                <img src="poster 14.png" class="card-img-top" alt="Salt Stays Longer Than Taste campaign poster">
+                </a>
+                <div class="card-body text-center">
+                    <h5>SALT STAYS LONGER THAN TASTE</h5>
+                    <p>EXCESS SALT MAKES KIDNEY WORK HARDER ALL DAY.</p>
+                </div>
+            </div>
+        </div>
+        <!-- 15 -->
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="50">
+            <div class="card campaign-card shadow h-100">
+                <a href="LISTEN TO YOUR BODY copy 5.html">
+                <img src="poster 15.png" class="card-img-top" alt="Clear Urine Is a Good Sign campaign poster">
+                </a>
+                <div class="card-body text-center">
+                    <h5>URINE COLOR AND HYDRATION</h5>
+                    <p>URINE COLOR CAN REFLECT HYDRATION, BUT IT DOES NOT DIAGNOSE KIDNEY HEALTH.</p>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="campaign-empty" id="campaignEmpty">
+            <i class="fas fa-search fa-2x mb-3" aria-hidden="true"></i>
+            <h5 class="fw-bold text-dark">No campaigns found</h5>
+            <p class="mb-0">Try a different search term.</p>
+        </div>
+    </div>
+        </section>
+    <section id="tips" class="py-5">
+        <div class="container">
+
+            <h2 class="text-center fw-bold mb-4">Health Tips &amp; Videos</h2>
+            <p class="text-center mb-5">Watch and learn how to protect your kidney health</p>
+
+            <div class="video-tools" role="search" aria-label="Search health videos">
+                <div class="video-search-wrap">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                    <label class="visually-hidden" for="videoSearch">Search health videos</label>
+                    <input class="video-search" id="videoSearch" type="search" placeholder="Search health videos..." autocomplete="off">
+                    <button class="clear-video-search" id="clearVideoSearch" type="button" aria-label="Clear video search"><i class="fas fa-times"></i></button>
+                </div>
+                <span class="video-count" id="videoCount" aria-live="polite">8 videos</span>
+            </div>
+
+            <div class="row g-4" id="videoGrid">
+
+                <div class="col-md-4">
+        <div class="card shadow h-100 border-0">
+            <div class="ratio ratio-16x9">
+                <!-- Changed preload to "none" to strictly prevent auto-loading/playing -->
+                <video controls preload="none" playsinline class="w-100 rounded-top">
+
+                    <source src="129. “Do Sports Drinks Help or Hurt Kidneys”.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="card-body text-center">
+                <h5 class="fw-bold text-danger">Hydration Balance</h5>
+                <p>Learn how sports drinks compare to water for kidney health.</p>
+            </div>
+        </div>
+    </div>
+
+                <div class="col-md-4">
+                    <div class="card shadow h-100 border-0">
+                        <div class="ratio ratio-16x9">
+                            <video controls preload="none" playsinline class="w-100"><source src="126. “Does Cold Water Affect Your Kidneys”.mp4" type="video/mp4"></video>
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="fw-bold text-success">Water Temperature</h5>
+                            <p>Does the temperature of your water truly impact your renal system?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card shadow h-100 border-0">
+                        <div class="ratio ratio-16x9">
+                            <video controls preload="none" playsinline class="w-100"><source src="130.  “Does Lack of Sleep Affect Your Kidneys”.mp4" type="video/mp4"></video>
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="fw-bold text-danger">Restful Recovery</h5>
+                            <p>Sleep plays a vital role in regulating kidney function and blood pressure.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card shadow h-100 border-0">
+                        <div class="ratio ratio-16x9">
+                            <video controls preload="none" playsinline class="w-100"><source src="132. “Are Processed Meats Hard on Kidneys”.mp4" type="video/mp4"></video>
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="fw-bold text-success">Watch Your Sodium</h5>
+                            <p>Processed meats are often high in sodium and nitrates which stress kidneys.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card shadow h-100 border-0">
+                        <div class="ratio ratio-16x9">
+                            <video controls preload="none" playsinline class="w-100"><source src="133. “Does Sitting Too Long Affect Circulation and Kidneys”.mp4" type="video/mp4"></video>
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="fw-bold text-danger">Stay Active</h5>
+                            <p>Prolonged sitting can impair circulation and impact renal efficiency.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card shadow h-100 border-0">
+                        <div class="ratio ratio-16x9">
+                            <video controls preload="none" playsinline class="w-100"><source src="134 “Why Kidney Disease Affects Bones”.mp4" type="video/mp4"></video>
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="fw-bold text-success">Mineral Balance</h5>
+                            <p>Your kidneys regulate minerals essential for strong, healthy bones.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card shadow h-100 border-0">
+                        <div class="ratio ratio-16x9">
+                            <video controls preload="none" playsinline class="w-100"><source src="127. “Does Too Much Soy Sauce Affect BP”.mp4" type="video/mp4"></video>
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="fw-bold text-danger">Salt Awareness</h5>
+                            <p>Excessive soy sauce intake can spike blood pressure and strain filters.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card shadow h-100 border-0">
+                        <div class="ratio ratio-16x9">
+                            <video controls preload="none" playsinline class="w-100"><source src="128. “Can Young People Get Kidney Disease”.mp4" type="video/mp4"></video>
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="fw-bold text-success">All-Age Awareness</h5>
+                            <p>Kidney health isn't just for seniors; early prevention starts now.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="video-empty" id="videoEmpty">
+                <i class="fas fa-video-slash fa-2x mb-3" aria-hidden="true"></i>
+                <h5 class="fw-bold text-dark">No videos found</h5>
+                <p class="mb-0">Try a different search term.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Back To Top Button -->
+    <a href="#home" class="floating-top-btn" aria-label="Back to top" title="Back to top">
+        <i class="fas fa-arrow-up"></i>
     </a>
-</li>
-            </ul>
+
+    <footer class="footer text-center text-white py-4">
+        <div class="container">
+
+            <!-- Logo + Name -->
+            <div class="d-flex justify-content-center align-items-center mb-3">
+                <img src="pfp.jpg" alt="1 PAG-ASA Logo" width="54" height="54" loading="lazy" decoding="async">
+                <span class="fw-bold fs-4">1 PAG-ASA</span>
+            </div>
+
+            <!-- Copyright -->
+            <p class="mb-2">© <span id="copyrightYear">2026</span> 1 PAG-ASA | Kidney Awareness Campaign</p>
+            <p class="small text-white-50 mb-3">Educational information only. It is not a diagnosis or a substitute for professional medical advice.</p>
+
+            <!-- Social Media -->
+            <div class="social-links">
+                <a href="https://www.facebook.com/1pagasa" target="_blank" rel="noopener noreferrer" aria-label="1 PAG-ASA on Facebook" class="text-white me-3">
+                    <i class="fab fa-facebook fa-2x"></i>
+                </a>
+
+                <a href="https://www.tiktok.com/@1pagasa" target="_blank" rel="noopener noreferrer" aria-label="1 PAG-ASA on TikTok" class="text-white me-3">
+                    <i class="fab fa-tiktok fa-2x"></i>
+                </a>
+
+                <a href="https://www.instagram.com/1pagasa" target="_blank" rel="noopener noreferrer" aria-label="1 PAG-ASA on Instagram" class="text-white me-3">
+                    <i class="fab fa-instagram fa-2x"></i>
+                </a>
+
+                <a href="https://youtube.com/@1Pag-Asa" target="_blank" rel="noopener noreferrer" aria-label="1 PAG-ASA on YouTube" class="text-white">
+                    <i class="fab fa-youtube fa-2x"></i>
+                </a>
+            </div>
 
         </div>
-    </div>
-</nav>
+    </footer>
 
-    <!-- HERO -->
-     
-    <section id="home" class="hero min-vh-100 d-flex align-items-center">
-        <div class="container text-center text-white hero-content">
-            <h1 data-aos="fade-up">#KidneysAlagaanNatin</h1>
-            <p class="lead" data-aos="fade-up" data-aos-delay="200">
-                Protect your kidneys. Protect your life.<br>
-                Healthy kidneys mean a healthier future.
-            </p>
-            <a href="#about" class="btn btn-success btn-lg mt-3" data-aos="fade-up" data-aos-delay="400">Learn More</a>
-        </div>  
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="container py-5">
-        <h2 class="text-center mb-5 fw-bold">Kidney Awareness</h2>
-        <div class="row text-center g-4">
-            <div class="col-md-4" data-aos="fade-up">
-                <div class="info-box p-4 rounded shadow">
-                    <h3 class="text-success">850M+</h3>
-                    <p>People worldwide suffer from kidney disease.</p>
-                </div>
-            </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="info-box p-4 rounded shadow">
-                    <h3 class="text-success">1 in 10</h3>
-                    <p>Adults globally may develop kidney disease.</p>
-                </div>
-            </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
-                <div class="info-box p-4 rounded shadow">
-                    <h3 class="text-success">Early Care</h3>
-                    <p>Prevention and early diagnosis save lives.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CAMPAIGN -->
-<section id="gallery">
-   <div class="container">
-      <div class="row">
-
-    <!-- 1 -->
-    <div class="col-md-4" data-aos="zoom-in">
-        <div class="card campaign-card shadow h-100">
-            <a href="campaign.html">
-                <img src="poster1.jpg" class="card-img-top" style="height:200px;object-fit:cover;">
-            </a>
-            <div class="card-body text-center">
-                <h5> ALL ABOUT 1PAGASA</h5>
-                <p>LEARN ABOUT KIDNEY AWARENESS.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 2 -->
-    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
-        <div class="card campaign-card shadow h-100">
-            <a href="HEALTHY LIFESTYLE..html"> 
-            <img src="poster2.jpg" class="card-img-top" style="height:200px;object-fit:cover;">
-            </a>
-            <div class="card-body text-center">
-                <h5>HEALTHY LIFESTYLE</h5>
-                <p>EXERCISE, PROPER DIET, AND LOW SALT INTAKE.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 3 -->
-    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
-        <div class="card campaign-card shadow h-100">
-            <a href="EARLY DETECTION.html"> 
-            <img src="poster3.jpg" class="card-img-top" style="height:200px;object-fit:cover;">
-            </a> 
-            <div class="card-body text-center">
-                <h5>EARLY DETECTION</h5>
-                <p>REGULAR SCREENINGS CAN SAVE LIVES.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 4 -->
-    <div class="col-md-4" data-aos="zoom-in">
-        <div class="card campaign-card shadow h-100">
-            <a href="MOVING FOR 10 MINUTES.html">
-            <img src="poster 4.png" class="card-img-top" style="height:200px;object-fit:cover;">
-            </a>
-            <div class="card-body text-center">
-                <h5>MOVING FOR 10 MINUTES</h5>
-                <p>COMMUNITY BASED KIDNEY AWARENESS.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 5 -->
-    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
-        <div class="card campaign-card shadow h-100">
-            <a href="Kidney Alert Too Much Sitting.html">
-            <img src="poster 5.png" class="card-img-top" style="height:200px;object-fit:cover;">
-            </a>
-            <div class="card-body text-center">
-                    <h5>TOO MUCH SITTING</h5>
-                    <p>Slow kidney Filtration.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 6 -->
-    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
-        <div class="card campaign-card shadow h-100">
-            <a href="LISTEN TO YOUR BODY copy 2.html">
-            <img src="poster 6.png" class="card-img-top" style="height:200px;object-fit:cover;">
-            </a>
-            <div class="card-body text-center">
-                <h5>LISTEN TO YOUR BODY</h5>
-                <p>EARLY DETECTION SAVES LIVES.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 7 -->
-    <div class="col-md-4" data-aos="zoom-in">
-        <div class="card campaign-card shadow h-100">
-            <a href="WHAT YOU EAT AFFECTS YOUR KIDNEYS.html">
-            <img src="poster 7.png" class="card-img-top" style="height:200px;object-fit:cover;">
-            </a>
-            <div class="card-body text-center">
-                <h5>WHAT YOU EAT AFFECTS YOUR KIDNEYS</h5>
-                <p>TAKING CARE OF YOUR KIDNEYS IS IMPORTANT.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 8 -->
-    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
-        <div class="card campaign-card shadow h-100">
-            <a href="LISTEN TO YOUR BODY copy 6.html">
-            <img src="poster 8.png" class="card-img-top" style="height:200px;object-fit:cover;">
-            </a>
-            <div class="card-body text-center">
-                <h5>YOUR KIDNEY HEALTH</h5>
-                <p>YOUR FOOD CHOICES MATTER.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 9 -->
-    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
-        <div class="card campaign-card shadow h-100">
-            <a href="YOUR KIDNEY FEEL.html">
-            <img src="poster 9.png" class="card-img-top" style="height:200px;object-fit:cover;">
-            </a>
-            <div class="card-body text-center">
-                <h5>YOUR KIDNEY FEEL YOUR CHOICES</h5>
-                <p>ENCOURAGE HEALTHY HABITS.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 10 -->
-    <div class="col-md-4" data-aos="zoom-in">
-        <div class="card campaign-card shadow h-100">
-            <a href="LISTEN TO YOUR BODY copy 4.html">
-            <img src="poster 10.png" class="card-img-top" style="height:200px;object-fit:cover;">
-            </a>
-            <div class="card-body text-center">
-                <h5>NOTICE CHANGES, ACT EARLY</h5>
-                <p>RECOGNIZE THE SIGNS AND TAKE ACTION.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 11 -->
-    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
-        <div class="card campaign-card shadow h-100">
-            <a href="LISTEN TO YOUR BODY copy 6.html">
-            <img src="poster 11.png" class="card-img-top" style="height:200px;object-fit:cover;">
-            </a>
-            <div class="card-body text-center">
-                <h5>LISTEN TO YOUR BODY IN MORNING</h5>
-                <p>MORNING SIGNS MATTER.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 12 -->
-    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
-        <div class="card campaign-card shadow h-100">
-            <a href="LISTEN TO YOUR BODY copy 6.html">
-            <img src="poster 12.png" class="card-img-top" style="height:200px;object-fit:cover;">
-            </a>
-            <div class="card-body text-center">
-                <h5>WATER FIRST, COFFEE LATER</h5>
-                <p>WAKE YOUR KIDNEY WITH WATER NOT CAFFEINE.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 13 -->
-    <div class="col-md-4" data-aos="zoom-in">
-        <div class="card campaign-card shadow h-100">
-            <a href="LISTEN TO YOUR BODY copy 3.html">
-            <img src="poster 13.png" class="card-img-top" style="height:200px;object-fit:cover;">
-            </a>
-            <div class="card-body text-center">
-                <h5>A GENTLE FRUIT FOR YOUR KIDNEYS</h5>
-                <p>HEALTHY DIGESTION SUPPORTS KIDNEY.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 14 -->
-    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
-        <div class="card campaign-card shadow h-100">
-            <a href="LISTEN TO YOUR BODY copy 4.html">
-            <img src="poster 14.png" class="card-img-top" style="height:200px;object-fit:cover;">
-            </a>
-            <div class="card-body text-center">
-                <h5>SALT STAYS LONGER THAN TASTE</h5>
-                <p>EXCESS SALT MAKES KIDNEY WORK HARDER ALL DAY.</p>
-            </div>
-        </div>
-    </div>
-       <!-- 15 -->
-    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="50">
-        <div class="card campaign-card shadow h-100">
-            <a href="LISTEN TO YOUR BODY copy 5.html">
-            <img src="poster 15.png" class="card-img-top" style="height:200px;object-fit:cover;">
-            </a>
-            <div class="card-body text-center">
-                <h5>CLEAR URINE IS A GOOD SIGN</h5>
-                <p>IT INDICATES YOUR KIDNEYS ARE FUNCTIONING WELL.</p>
-            </div>
-        </div>
-    </div>
-    </section>
-   <section id="tips" class="py-5" style="background: linear-gradient(135deg, #fff5f5 0%, #f0fff4 100%);">
-    <div class="container">
-
-        <h2 class="text-center fw-bold mb-4">Health Tips & Videos</h2>
-        <p class="text-center mb-5">Watch and learn how to protect your kidney health</p>
-
-        <div class="row g-4">
-
-            <div class="col-md-4">
-    <div class="card shadow h-100 border-0">
-        <div class="ratio ratio-16x9">
-            <!-- Changed preload to "none" to strictly prevent auto-loading/playing -->
-            <video controls preload="none" class="w-100 rounded-top">
-
-                <source src="129. “Do Sports Drinks Help or Hurt Kidneys”.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div> 
-        <div class="card-body text-center">
-            <h5 class="fw-bold text-danger">Hydration Balance</h5>
-            <p>Learn how sports drinks compare to water for kidney health.</p>
-        </div>
-    </div>
-</div>
-
-            <div class="col-md-4">
-                <div class="card shadow h-100 border-0">
-                    <div class="ratio ratio-16x9">
-                        <video controls preload="none" class="w-100 rounded-top"></video>
-                        <video controls preload="none" class="w-100"><source src="126. “Does Cold Water Affect Your Kidneys”.mp4" type="video/mp4"></video>
+        <!-- IMAGE MODAL -->
+        <div id="imageModal" class="modal fade" tabindex="-1" aria-labelledby="previewTitle">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-fullscreen-sm-down">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div>
+                            <h5 class="modal-title mb-1" id="previewTitle">Campaign Poster</h5>
+                            <div class="preview-count" id="previewCount">1 of 15</div>
+                        </div>
+                        <button class="preview-fullscreen" id="previewFullscreen" type="button" aria-label="Enter full screen" title="Full screen"><i class="fas fa-expand"></i></button>
+                        <button type="button" class="btn-close btn-close-white ms-2" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="card-body text-center">
-                        <h5 class="fw-bold text-success">Water Temperature</h5>
-                        <p>Does the temperature of your water truly impact your renal system?</p>
+                    <div class="modal-body text-center">
+                        <div class="preview-loader" id="previewLoader" role="status"><span class="visually-hidden">Loading poster</span></div>
+                        <button class="preview-nav preview-prev" id="previewPrev" type="button" aria-label="Previous campaign"><i class="fas fa-chevron-left"></i></button>
+                        <img id="modalImg" src="poster1.jpg" class="img-fluid" alt="Campaign poster preview">
+                        <button class="preview-nav preview-next" id="previewNext" type="button" aria-label="Next campaign"><i class="fas fa-chevron-right"></i></button>
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-4">
-                <div class="card shadow h-100 border-0">
-                    <div class="ratio ratio-16x9">
-                        <video controls preload="none" class="w-100"><source src="130.  “Does Lack of Sleep Affect Your Kidneys”.mp4" type="video/mp4"></video>
-                    </div>
-                    <div class="card-body text-center">
-                        <h5 class="fw-bold text-danger">Restful Recovery</h5>
-                        <p>Sleep plays a vital role in regulating kidney function and blood pressure.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card shadow h-100 border-0">
-                    <div class="ratio ratio-16x9">
-                        <video controls preload="none" class="w-100"><source src="132. “Are Processed Meats Hard on Kidneys”.mp4" type="video/mp4"></video>
-                    </div>
-                    <div class="card-body text-center">
-                        <h5 class="fw-bold text-success">Watch Your Sodium</h5>
-                        <p>Processed meats are often high in sodium and nitrates which stress kidneys.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card shadow h-100 border-0">
-                    <div class="ratio ratio-16x9">
-                        <video controls preload="none" class="w-100"><source src="133. “Does Sitting Too Long Affect Circulation and Kidneys”.mp4" type="video/mp4"></video>
-                    </div>
-                    <div class="card-body text-center">
-                        <h5 class="fw-bold text-danger">Stay Active</h5>
-                        <p>Prolonged sitting can impair circulation and impact renal efficiency.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card shadow h-100 border-0">
-                    <div class="ratio ratio-16x9">
-                        <video controls preload="none" class="w-100"><source src="134 “Why Kidney Disease Affects Bones”.mp4" type="video/mp4"></video>
-                    </div>
-                    <div class="card-body text-center">
-                        <h5 class="fw-bold text-success">Mineral Balance</h5>
-                        <p>Your kidneys regulate minerals essential for strong, healthy bones.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card shadow h-100 border-0">
-                    <div class="ratio ratio-16x9">
-                        <video controls preload="none" class="w-100"><source src="127. “Does Too Much Soy Sauce Affect BP”.mp4" type="video/mp4"></video>
-                    </div>
-                    <div class="card-body text-center">
-                        <h5 class="fw-bold text-danger">Salt Awareness</h5>
-                        <p>Excessive soy sauce intake can spike blood pressure and strain filters.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card shadow h-100 border-0">
-                    <div class="ratio ratio-16x9">
-                        <video controls preload="none" class="w-100"><source src="128. “Can Young People Get Kidney Disease”.mp4" type="video/mp4"></video>
-                    </div>
-                    <div class="card-body text-center">
-                        <h5 class="fw-bold text-success">All-Age Awareness</h5>
-                        <p>Kidney health isn't just for seniors; early prevention starts now.</p>
-                    </div>
-                </div>
-            </div>
-<div class="col-md-4">
-    <div class="card shadow h-100 border-0">
-        <div class="ratio ratio-16x9">
-            <!-- Using <video> instead of <iframe> for better control -->
-            <video controls preload="none" class="rounded-top">
-                <source src="129. “Do Sports Drinks Help or Hurt Kidneys”.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-        <div class="card-body text-center">
-            <h5 class="fw-bold text-success">Sports Drinks and Kidney Health</h5>
-            <p class="text-muted">Understanding the impact of sports drinks on kidney function.</p>
-        </div>
-    </div>  
-</div>
-</section>
-    
-  <!-- FOOTER -->
-<!-- FOOTER -->
-<!-- FOOTER -->
-<!-- Floating Back To Top Button -->
-<a href="#home" class="floating-top-btn">
-    <i class="fas fa-arrow-up"></i>
-</a>
-
-<footer class="footer text-center text-white py-4">
-    <div class="container">
-
-        <!-- Logo + Name -->
-        <div class="d-flex justify-content-center align-items-center mb-3">
-            <img src="pfp.jpg" alt="1 PAG-ASA Logo" 
-                 style="height:50px; width:auto; margin-right:10px;">
-            <span class="fw-bold fs-4">1 PAG-ASA</span>
         </div>
 
-        <!-- Copyright -->
-        <p class="mb-3">© 2026 1 PAG-ASA | Kidney Awareness Campaign</p>
+        <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+        <script>
+        (() => {
+            'use strict';
 
-        <!-- Social Media -->
-        <div class="social-links">
-            <a href="https://www.facebook.com/1pagasa" target="_blank" class="text-white me-3">
-                <i class="fab fa-facebook fa-2x"></i>
-            </a>
+            const UI_CONFIG = {
+                animationDuration: 750,
+                scrollOffset: 120
+            };
 
-            <a href="https://www.tiktok.com/@1pagasa" target="_blank" class="text-white me-3">
-                <i class="fab fa-tiktok fa-2x"></i>
-            </a>
+            const UI = {
+                campaignItems: [],
+                visibleCampaigns: [],
+                videoItems: [],
+                currentPreview: 0,
+                modal: null,
+                swipeStartX: null,
 
-            <a href="https://www.instagram.com/1pagasa" target="_blank" class="text-white me-3">
-                <i class="fab fa-instagram fa-2x"></i>
-            </a>
+                init() {
+                    this.cacheElements();
+                    this.safeInit('theme', () => this.initTheme());
+                    this.safeInit('animations', () => this.initAOS());
+                    this.safeInit('campaign cards', () => this.prepareCampaignCards());
+                    this.safeInit('campaign search', () => this.initCampaignSearch());
+                    this.safeInit('campaign layout', () => this.initCampaignLayout());
+                    this.safeInit('poster preview', () => this.initPosterPreview());
+                    this.safeInit('videos', () => this.initVideos());
+                    this.safeInit('navigation', () => this.initNavigation());
+                    this.safeInit('back-to-top button', () => this.initBackToTop());
+                    this.safeInit('copyright year', () => this.initCopyrightYear());
+                    this.safeInit('campaign results', () => this.updateCampaignResults());
+                },
 
-            <a href="https://youtube.com/@1Pag-Asa" target="_blank" class="text-white">
-                <i class="fab fa-youtube fa-2x"></i>
-            </a>
-        </div>
+                safeInit(feature, callback) {
+                    try {
+                        callback();
+                    } catch (error) {
+                        console.error(`[1 PAG-ASA] Could not initialize ${feature}.`, error);
+                    }
+                },
 
-    </div>
-</footer>
+                cacheElements() {
+                    this.navbar = document.querySelector('.navbar');
+                    this.navCollapse = document.getElementById('nav');
+                    this.navToggler = document.querySelector('[data-bs-target="#nav"]');
+                    this.search = document.getElementById('campaignSearch');
+                    this.clearSearch = document.getElementById('clearCampaignSearch');
+                    this.campaignGrid = document.getElementById('campaignGrid');
+                    this.campaignCount = document.getElementById('campaignCount');
+                    this.campaignEmpty = document.getElementById('campaignEmpty');
+                    this.campaignLayoutToggle = document.getElementById('campaignLayoutToggle');
+                    this.themeToggle = document.getElementById('themeToggle');
+                    this.scrollProgressBar = document.getElementById('scrollProgressBar');
+                    this.videoGrid = document.getElementById('videoGrid');
+                    this.videoSearch = document.getElementById('videoSearch');
+                    this.clearVideoSearch = document.getElementById('clearVideoSearch');
+                    this.videoCount = document.getElementById('videoCount');
+                    this.videoEmpty = document.getElementById('videoEmpty');
+                    this.backToTop = document.querySelector('.floating-top-btn');
+                    this.modalElement = document.getElementById('imageModal');
+                    this.modalContent = this.modalElement?.querySelector('.modal-content') || null;
+                    this.modalImage = document.getElementById('modalImg');
+                    this.previewTitle = document.getElementById('previewTitle');
+                    this.previewCount = document.getElementById('previewCount');
+                    this.previewLoader = document.getElementById('previewLoader');
+                    this.previewPrev = document.getElementById('previewPrev');
+                    this.previewNext = document.getElementById('previewNext');
+                    this.fullscreenButton = document.getElementById('previewFullscreen');
+                    this.copyrightYear = document.getElementById('copyrightYear');
+                },
 
-<style>
-.footer {
-    background: #000000;
-}
+                initTheme() {
+                    if (!this.themeToggle) return;
 
-/* Floating Arrow Button */
-.floating-top-btn {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    width: 55px;
-    height: 55px;
-    background: #ffffff;
-    color: #000000;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 22px;
-    text-decoration: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    z-index: 999;
-    transition: 0.3s ease;
-}
+                    let savedTheme = null;
+                    try {
+                        savedTheme = localStorage.getItem('one-pagasa-theme');
+                    } catch {
+                        // Storage can be unavailable in private previews.
+                    }
 
-.floating-top-btn:hover {
-    transform: translateY(-5px);
-    background: #000000;
-    color: white;
-}
-</style>
+                    const prefersDark = typeof window.matchMedia === 'function'
+                        && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    const useDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+                    this.applyTheme(useDark);
 
-<!-- Bootstrap JS (place before closing body tag) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- IMAGE MODAL -->
-    <div id="imageModal" class="modal fade" tabindex="-1">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Campaign Poster</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <img id="modalImg" src="" class="img-fluid" style="max-height: 70vh;">
-                </div>
-            </div>
-        </div>
-    </div>
+                    this.themeToggle.addEventListener('click', () => {
+                        const nextDark = !document.body.classList.contains('theme-dark');
+                        this.applyTheme(nextDark);
+                        try {
+                            localStorage.setItem('one-pagasa-theme', nextDark ? 'dark' : 'light');
+                        } catch {
+                            // Theme still works even when storage is blocked.
+                        }
+                    });
+                },
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script src="script.js"></script>
-    <script>
-    // 1. Initialize AOS (Animate on Scroll)
-const UI_CONFIG = {
-    animationDuration: 800,
-    searchDebounce: 250,
-    scrollOffset: 150 // Adjust this for when the active link switches
-};
+                applyTheme(useDark) {
+                    document.body.classList.toggle('theme-dark', useDark);
+                    if (this.themeToggle) {
+                        this.themeToggle.innerHTML = `<i class="fas fa-${useDark ? 'sun' : 'moon'}" aria-hidden="true"></i>`;
+                        this.themeToggle.setAttribute('aria-label', useDark ? 'Use light theme' : 'Use dark theme');
+                        this.themeToggle.setAttribute('title', useDark ? 'Use light theme' : 'Use dark theme');
+                    }
+                    document.querySelector('meta[name="theme-color"]')
+                        ?.setAttribute('content', useDark ? '#0d1510' : '#8f1f25');
+                },
 
-const UI = {
-    init() {
-        this.initAOS();
-        this.handleActiveLink();
-        this.initScrollSpy();
-    },
+                initAOS() {
+                    if (!window.AOS || typeof window.AOS.init !== 'function') return;
+                    const reduceMotion = typeof window.matchMedia === 'function'
+                        && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                    window.AOS.init({
+                        duration: reduceMotion ? 0 : UI_CONFIG.animationDuration,
+                        once: true,
+                        offset: 90,
+                        easing: 'ease-out-cubic',
+                        disable: reduceMotion
+                    });
+                },
 
-    initAOS() {
-        if (typeof AOS !== 'undefined') {
-            AOS.init({
-                duration: UI_CONFIG.animationDuration,
-                once: true,
-                offset: 100,
-                disable: 'mobile'
-            });
-        }
-    },
+                refreshAOS() {
+                    if (window.AOS && typeof window.AOS.refreshHard === 'function') {
+                        window.setTimeout(() => window.AOS.refreshHard(), 0);
+                    }
+                },
 
-    // UPGRADE: Dynamic Active Link highlighting
-    handleActiveLink() {
-        const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        navLinks.forEach(link => {
-            const linkPath = link.getAttribute('href');
-            
-            // Remove existing active states
-            link.classList.remove('active');
-            link.style.color = '';
+                canPreviewPosters() {
+                    return Boolean(
+                        window.bootstrap?.Modal
+                        && this.modalElement
+                        && this.modalImage
+                        && this.previewTitle
+                        && this.previewCount
+                    );
+                },
 
-            // Match current page or hash
-            if (linkPath === currentPath || (currentPath === 'index.html' && linkPath === '#')) {
-                link.classList.add('active');
-                link.style.color = 'var(--primary-red)';
-            }
-        });
-    },
+                prepareCampaignCards() {
+                    if (!this.campaignGrid) return;
 
-    // NEW UPGRADE: Scroll-Spy 
-    // Highlights the navbar link as you scroll past sections
-    initScrollSpy() {
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link');
+                    this.campaignItems = [...this.campaignGrid.children]
+                        .filter(item => item.matches('.col-md-4, .campaign-item'));
 
-        window.addEventListener('scroll', () => {
-            let current = "";
-            sections.forEach((section) => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - UI_CONFIG.scrollOffset) {
-                    current = section.getAttribute("id");
+                    this.campaignItems.forEach((item, index) => {
+                        item.classList.add('campaign-item');
+                        const card = item.querySelector('.campaign-card');
+                        const image = card?.querySelector('.card-img-top');
+                        const title = card?.querySelector('h5')?.textContent.trim() || `Campaign ${index + 1}`;
+                        const description = card?.querySelector('p')?.textContent.trim() || '';
+
+                        item.dataset.search = `${title} ${description}`.toLowerCase();
+                        item.dataset.title = title;
+                        item.dataset.image = image?.getAttribute('src') || '';
+
+                        if (card && !card.querySelector('.campaign-index')) {
+                            const indexBadge = document.createElement('span');
+                            indexBadge.className = 'campaign-index';
+                            indexBadge.textContent = String(index + 1).padStart(2, '0');
+                            indexBadge.setAttribute('aria-hidden', 'true');
+                            card.appendChild(indexBadge);
+                        }
+
+                        const destination = card?.querySelector(':scope > a')?.getAttribute('href');
+                        const cardBody = card?.querySelector('.card-body');
+                        if (destination && cardBody && !cardBody.querySelector('.campaign-open')) {
+                            const openLink = document.createElement('a');
+                            openLink.className = 'campaign-open';
+                            openLink.href = destination;
+                            openLink.innerHTML = 'Open Campaign <i class="fas fa-arrow-right" aria-hidden="true"></i>';
+                            openLink.setAttribute('aria-label', `Open ${title}`);
+                            cardBody.appendChild(openLink);
+                        }
+
+                        if (image) {
+                            image.alt = `${title} campaign poster`;
+                            image.loading = index < 3 ? 'eager' : 'lazy';
+                            image.decoding = 'async';
+                            image.addEventListener('error', () => {
+                                const link = image.closest('a');
+                                link?.classList.add('poster-missing');
+                                link?.setAttribute('title', 'Poster image file could not be loaded');
+                            }, { once: true });
+                        }
+
+                        if (card && image && this.canPreviewPosters() && !card.querySelector('.quick-preview')) {
+                            const previewButton = document.createElement('button');
+                            previewButton.className = 'quick-preview';
+                            previewButton.type = 'button';
+                            previewButton.title = `Quick preview: ${title}`;
+                            previewButton.setAttribute('aria-label', `Quick preview of ${title}`);
+                            previewButton.innerHTML = '<i class="fas fa-eye" aria-hidden="true"></i>';
+                            previewButton.addEventListener('click', event => {
+                                event.preventDefault();
+                                event.stopPropagation();
+                                const position = this.visibleCampaigns.indexOf(item);
+                                if (position >= 0) this.openPreview(position);
+                            });
+                            card.appendChild(previewButton);
+                        }
+                    });
+                },
+
+                initCampaignSearch() {
+                    if (!this.search || !this.clearSearch) return;
+
+                    this.search.addEventListener('input', () => {
+                        this.clearSearch.classList.toggle('show', Boolean(this.search.value));
+                        this.updateCampaignResults();
+                    });
+
+                    this.clearSearch.addEventListener('click', () => {
+                        this.search.value = '';
+                        this.clearSearch.classList.remove('show');
+                        this.updateCampaignResults();
+                        this.search.focus();
+                    });
+                },
+
+                initCampaignLayout() {
+                    if (!this.campaignGrid || !this.campaignLayoutToggle) return;
+
+                    let savedLayout = 'grid';
+                    try {
+                        savedLayout = localStorage.getItem('one-pagasa-campaign-layout') || 'grid';
+                    } catch {
+                        // The layout toggle still works without storage.
+                    }
+
+                    this.applyCampaignLayout(savedLayout === 'list');
+                    this.campaignLayoutToggle.addEventListener('click', () => {
+                        const useList = !this.campaignGrid.classList.contains('campaign-list');
+                        this.applyCampaignLayout(useList);
+                        try {
+                            localStorage.setItem('one-pagasa-campaign-layout', useList ? 'list' : 'grid');
+                        } catch {
+                            // Non-critical.
+                        }
+                        this.refreshAOS();
+                    });
+                },
+
+                applyCampaignLayout(useList) {
+                    if (!this.campaignGrid || !this.campaignLayoutToggle) return;
+                    this.campaignGrid.classList.toggle('campaign-list', useList);
+                    this.campaignLayoutToggle.setAttribute('aria-pressed', String(useList));
+                    this.campaignLayoutToggle.setAttribute('aria-label', useList ? 'Use grid layout' : 'Use list layout');
+                    this.campaignLayoutToggle.setAttribute('title', useList ? 'Use grid layout' : 'Use list layout');
+                    this.campaignLayoutToggle.innerHTML = `<i class="fas fa-${useList ? 'grip' : 'list'}" aria-hidden="true"></i>`;
+                },
+
+                updateCampaignResults() {
+                    if (!this.search || !this.campaignGrid || !this.campaignCount || !this.campaignEmpty) return;
+
+                    const query = this.search.value.trim().toLowerCase();
+                    this.visibleCampaigns = this.campaignItems.filter(item => {
+                        const matches = (item.dataset.search || '').includes(query);
+                        item.hidden = !matches;
+                        return matches;
+                    });
+
+                    const count = this.visibleCampaigns.length;
+                    this.campaignCount.textContent = `${count} ${count === 1 ? 'campaign' : 'campaigns'}`;
+                    this.campaignGrid.hidden = count === 0;
+                    this.campaignEmpty.classList.toggle('show', count === 0);
+
+                    if (count > 0 && this.currentPreview >= count) {
+                        this.currentPreview = count - 1;
+                        if (this.modalElement?.classList.contains('show')) this.updatePreview();
+                    }
+                    this.refreshAOS();
+                },
+
+                initPosterPreview() {
+                    if (!this.canPreviewPosters()) {
+                        this.fullscreenButton?.setAttribute('hidden', '');
+                        return;
+                    }
+
+                    this.modal = new window.bootstrap.Modal(this.modalElement);
+                    this.previewPrev?.addEventListener('click', () => this.showPreview(this.currentPreview - 1));
+                    this.previewNext?.addEventListener('click', () => this.showPreview(this.currentPreview + 1));
+
+                    const fullscreenSupported = Boolean(
+                        this.modalContent?.requestFullscreen
+                        && document.exitFullscreen
+                    );
+                    if (fullscreenSupported) {
+                        this.fullscreenButton?.addEventListener('click', () => this.toggleFullscreen());
+                        document.addEventListener('fullscreenchange', () => this.updateFullscreenButton());
+                    } else {
+                        this.fullscreenButton?.setAttribute('hidden', '');
+                    }
+
+                    this.modalElement.addEventListener('hidden.bs.modal', () => {
+                        this.swipeStartX = null;
+                        if (document.fullscreenElement) document.exitFullscreen?.().catch(() => {});
+                    });
+
+                    const previewBody = this.modalElement.querySelector('.modal-body');
+                    previewBody?.addEventListener('pointerdown', event => {
+                        if (event.pointerType === 'touch' || event.pointerType === 'pen') {
+                            this.swipeStartX = event.clientX;
+                        }
+                    });
+                    previewBody?.addEventListener('pointerup', event => {
+                        if (this.swipeStartX === null) return;
+                        const distance = event.clientX - this.swipeStartX;
+                        if (Math.abs(distance) > 55) {
+                            this.showPreview(this.currentPreview + (distance < 0 ? 1 : -1));
+                        }
+                        this.swipeStartX = null;
+                    });
+                    previewBody?.addEventListener('pointercancel', () => {
+                        this.swipeStartX = null;
+                    });
+
+                    document.addEventListener('keydown', event => {
+                        const target = event.target instanceof Element ? event.target : null;
+                        const isEditing = target?.matches('input, textarea, select, [contenteditable="true"]');
+                        const previewOpen = this.modalElement.classList.contains('show');
+
+                        if (!previewOpen && event.key === '/' && !isEditing && !event.ctrlKey && !event.metaKey && !event.altKey) {
+                            event.preventDefault();
+                            this.search?.focus();
+                            return;
+                        }
+                        if (!previewOpen) return;
+                        if (event.key === 'ArrowRight') this.showPreview(this.currentPreview + 1);
+                        else if (event.key === 'ArrowLeft') this.showPreview(this.currentPreview - 1);
+                        else if (event.key.toLowerCase() === 'f' && !isEditing) this.toggleFullscreen();
+                    });
+                },
+
+                openPreview(index) {
+                    if (!this.modal || !this.visibleCampaigns.length) return;
+                    this.currentPreview = Math.max(0, Math.min(index, this.visibleCampaigns.length - 1));
+                    this.updatePreview();
+                    this.modal.show();
+                    document.querySelectorAll('video').forEach(video => video.pause());
+                },
+
+                showPreview(index) {
+                    if (!this.visibleCampaigns.length) return;
+                    this.currentPreview = (index + this.visibleCampaigns.length) % this.visibleCampaigns.length;
+                    this.updatePreview();
+                },
+
+                updatePreview() {
+                    const item = this.visibleCampaigns[this.currentPreview];
+                    if (!item || !this.modalImage) return;
+
+                    const imageSource = item.dataset.image || '';
+                    let settled = false;
+                    const finish = success => {
+                        if (settled) return;
+                        settled = true;
+                        if (this.previewLoader) this.previewLoader.hidden = true;
+                        this.modalImage.style.opacity = success ? '1' : '.22';
+                        this.modalImage.setAttribute('aria-busy', 'false');
+                        if (success) this.preloadPreviewNeighbors();
+                    };
+
+                    if (this.previewLoader) this.previewLoader.hidden = false;
+                    this.modalImage.style.opacity = '0';
+                    this.modalImage.setAttribute('aria-busy', 'true');
+                    this.modalImage.onload = () => finish(true);
+                    this.modalImage.onerror = () => {
+                        this.modalImage.alt = 'Poster preview unavailable';
+                        finish(false);
+                    };
+
+                    this.modalImage.alt = `${item.dataset.title} campaign poster`;
+                    this.previewTitle.textContent = item.dataset.title || 'Campaign Poster';
+                    this.previewCount.textContent = `${this.currentPreview + 1} of ${this.visibleCampaigns.length}`;
+                    this.previewPrev?.toggleAttribute('disabled', this.visibleCampaigns.length < 2);
+                    this.previewNext?.toggleAttribute('disabled', this.visibleCampaigns.length < 2);
+
+                    if (!imageSource) {
+                        this.modalImage.removeAttribute('src');
+                        this.modalImage.onerror?.();
+                        return;
+                    }
+
+                    this.modalImage.src = imageSource;
+                    if (this.modalImage.complete) {
+                        window.requestAnimationFrame(() => finish(this.modalImage.naturalWidth > 0));
+                    }
+                },
+
+                preloadPreviewNeighbors() {
+                    if (this.visibleCampaigns.length < 2) return;
+                    [-1, 1].forEach(offset => {
+                        const index = (this.currentPreview + offset + this.visibleCampaigns.length) % this.visibleCampaigns.length;
+                        const source = this.visibleCampaigns[index]?.dataset.image;
+                        if (!source) return;
+                        const image = new Image();
+                        image.decoding = 'async';
+                        image.src = source;
+                    });
+                },
+
+                toggleFullscreen() {
+                    if (!this.modalContent) return;
+                    if (!document.fullscreenElement) {
+                        this.modalContent.requestFullscreen?.().catch(() => {});
+                    } else {
+                        document.exitFullscreen?.().catch(() => {});
+                    }
+                },
+
+                updateFullscreenButton() {
+                    if (!this.fullscreenButton) return;
+                    const active = Boolean(document.fullscreenElement);
+                    this.fullscreenButton.innerHTML = `<i class="fas fa-${active ? 'compress' : 'expand'}" aria-hidden="true"></i>`;
+                    this.fullscreenButton.setAttribute('aria-label', active ? 'Exit full screen' : 'Enter full screen');
+                    this.fullscreenButton.setAttribute('title', active ? 'Exit full screen' : 'Full screen');
+                },
+
+                initVideos() {
+                    if (!this.videoGrid) return;
+
+                    this.videoItems = [...this.videoGrid.children]
+                        .filter(item => item.matches('.col-md-4, .video-item'));
+                    const videos = this.videoItems
+                        .map(item => item.querySelector('video'))
+                        .filter(Boolean);
+
+                    this.videoItems.forEach((item, index) => {
+                        item.classList.add('video-item');
+                        const video = item.querySelector('video');
+                        const card = item.querySelector('.card');
+                        const ratio = card?.querySelector('.ratio');
+                        const title = card?.querySelector('h5')?.textContent.trim() || `Health video ${index + 1}`;
+                        const description = card?.querySelector('p')?.textContent.trim() || '';
+                        item.dataset.search = `${title} ${description}`.toLowerCase();
+
+                        if (ratio && !ratio.querySelector('.video-index')) {
+                            const badge = document.createElement('span');
+                            badge.className = 'video-index';
+                            badge.textContent = `VIDEO ${String(index + 1).padStart(2, '0')}`;
+                            badge.setAttribute('aria-hidden', 'true');
+                            ratio.appendChild(badge);
+                        }
+
+                        if (!video) return;
+                        video.setAttribute('aria-label', title);
+                        video.setAttribute('playsinline', '');
+                        video.addEventListener('play', () => {
+                            videos.forEach(other => {
+                                if (other !== video) other.pause();
+                            });
+                        });
+                        video.addEventListener('loadeddata', () => ratio?.classList.remove('video-load-error'));
+                        video.addEventListener('error', () => ratio?.classList.add('video-load-error'));
+                        video.querySelectorAll('source').forEach(source => {
+                            source.addEventListener('error', () => ratio?.classList.add('video-load-error'));
+                        });
+                    });
+
+                    if (this.videoSearch && this.clearVideoSearch) {
+                        this.videoSearch.addEventListener('input', () => {
+                            this.clearVideoSearch.classList.toggle('show', Boolean(this.videoSearch.value));
+                            this.updateVideoResults();
+                        });
+                        this.clearVideoSearch.addEventListener('click', () => {
+                            this.videoSearch.value = '';
+                            this.clearVideoSearch.classList.remove('show');
+                            this.updateVideoResults();
+                            this.videoSearch.focus();
+                        });
+                    }
+                    this.updateVideoResults();
+                },
+
+                updateVideoResults() {
+                    if (!this.videoSearch || !this.videoGrid || !this.videoEmpty || !this.videoCount) return;
+
+                    const query = this.videoSearch.value.trim().toLowerCase();
+                    let visibleCount = 0;
+                    this.videoItems.forEach(item => {
+                        const matches = (item.dataset.search || '').includes(query);
+                        item.hidden = !matches;
+                        if (matches) visibleCount += 1;
+                        else item.querySelector('video')?.pause();
+                    });
+                    this.videoGrid.hidden = visibleCount === 0;
+                    this.videoEmpty.classList.toggle('show', visibleCount === 0);
+                    this.videoCount.textContent = `${visibleCount} ${visibleCount === 1 ? 'video' : 'videos'}`;
+                    this.refreshAOS();
+                },
+
+                initNavigation() {
+                    if (!this.navbar) return;
+
+                    const sectionLinks = [...document.querySelectorAll('.navbar .nav-link[href^="#"]')];
+                    const sections = sectionLinks
+                        .map(link => document.querySelector(link.getAttribute('href')))
+                        .filter(Boolean);
+
+                    const updateNavigation = () => {
+                        this.navbar.classList.toggle('nav-scrolled', window.scrollY > 30);
+                        const scrollable = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+                        if (this.scrollProgressBar) {
+                            const progress = Math.min(100, Math.max(0, (window.scrollY / scrollable) * 100));
+                            this.scrollProgressBar.style.width = `${progress}%`;
+                        }
+
+                        let currentId = '';
+                        sections.forEach(section => {
+                            if (section.getBoundingClientRect().top <= UI_CONFIG.scrollOffset) currentId = section.id;
+                        });
+                        sectionLinks.forEach(link => {
+                            const active = link.getAttribute('href') === `#${currentId}`;
+                            link.classList.toggle('active', active);
+                            if (active) link.setAttribute('aria-current', 'page');
+                            else link.removeAttribute('aria-current');
+                        });
+                    };
+
+                    let ticking = false;
+                    const requestUpdate = () => {
+                        if (ticking) return;
+                        ticking = true;
+                        window.requestAnimationFrame(() => {
+                            updateNavigation();
+                            ticking = false;
+                        });
+                    };
+                    window.addEventListener('scroll', requestUpdate, { passive: true });
+                    window.addEventListener('resize', requestUpdate, { passive: true });
+                    updateNavigation();
+
+                    if (!window.bootstrap?.Collapse && this.navToggler && this.navCollapse) {
+                        this.navToggler.addEventListener('click', () => {
+                            const willOpen = !this.navCollapse.classList.contains('show');
+                            this.navCollapse.classList.toggle('show', willOpen);
+                            this.navToggler.setAttribute('aria-expanded', String(willOpen));
+                        });
+                    }
+
+                    document.querySelectorAll('.navbar a[href^="#"]').forEach(link => {
+                        link.addEventListener('click', () => {
+                            if (!this.navCollapse?.classList.contains('show')) return;
+                            if (window.bootstrap?.Collapse) {
+                                window.bootstrap.Collapse.getOrCreateInstance(this.navCollapse).hide();
+                            } else {
+                                this.navCollapse.classList.remove('show');
+                                this.navToggler?.setAttribute('aria-expanded', 'false');
+                            }
+                        });
+                    });
+                },
+
+                initBackToTop() {
+                    if (!this.backToTop) return;
+                    const updateButton = () => this.backToTop.classList.toggle('show', window.scrollY > 420);
+                    window.addEventListener('scroll', updateButton, { passive: true });
+                    updateButton();
+                    this.backToTop.addEventListener('click', event => {
+                        event.preventDefault();
+                        const reduceMotion = typeof window.matchMedia === 'function'
+                            && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+                    });
+                },
+
+                initCopyrightYear() {
+                    if (this.copyrightYear) this.copyrightYear.textContent = String(new Date().getFullYear());
                 }
-            });
+            };
 
-            navLinks.forEach((link) => {
-                link.classList.remove("active");
-                link.style.color = '';
-                if (link.getAttribute("href").includes(current) && current !== "") {
-                    link.classList.add("active");
-                    link.style.color = 'var(--primary-red)';
-                }
-            });
-        });
-    }
-};
-
-// Initialize everything
-document.addEventListener('DOMContentLoaded', () => UI.init());
-// Inside your UI initialization or Scroll listener
-const isMobile = window.innerWidth <= 768;
-
-if (!isMobile) {
-    // Only run the logic to show the button if NOT on mobile
-    window.addEventListener('scroll', () => {
-        const btn = document.querySelector('.floating-top-btn');
-        if (btn) {
-            // Your existing logic to add/remove the 'show' class
-            if (window.pageYOffset > 300) {
-                btn.classList.add('show');
+            const start = () => UI.init();
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', start, { once: true });
             } else {
-                btn.classList.remove('show');
+                start();
             }
-        }
-    });
-} else {
-    // Force hide if the script is already running
-    const btn = document.querySelector('.floating-top-btn');
-    if (btn) btn.style.display = 'none';
-}
-</script>
-</body>
-</html>
+        })();
+        </script>
+    </body>
+    </html> 
