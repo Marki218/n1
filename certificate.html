@@ -3,61 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="1 PAG-ASA kidney awareness certificates and recognition gallery.">
+    <meta name="theme-color" content="#812228">
     <title>1 PAG-ASA | Kidney Awareness Recognition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <style>
         :root {
-            --primary-red: #d32f2f;
-            --primary-green: #2e7d32;
-            --soft-bg: #f8f9fa;
+            --primary-red: #9c252b;
+            --dark-red: #68161b;
+            --primary-green: #246b3c;
+            --dark-green: #153f26;
+            --gold: #c4a25a;
+            --soft-bg: #f7f5f0;
+            --text-color: #253029;
         }
 
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            background: var(--soft-bg);
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 10% 8%, rgba(196, 162, 90, 0.13), transparent 24rem),
+                linear-gradient(180deg, #ffffff 0%, var(--soft-bg) 100%);
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            color: #2d3436;
+            color: var(--text-color);
+            -webkit-font-smoothing: antialiased;
         }
 
         /* Navbar */
         .navbar {
-            background: rgba(148, 34, 34, 0.95) !important;
+            position: sticky;
+            top: 0;
+            z-index: 1030;
+            min-height: 72px;
+            background: linear-gradient(100deg, rgba(104, 22, 27, 0.97), rgba(156, 37, 43, 0.96), rgba(21, 63, 38, 0.96)) !important;
             backdrop-filter: blur(12px);
-            border-bottom: 3px solid var(--primary-green);
+            border-bottom: 1px solid rgba(255,255,255,0.16);
         }
+
+        .navbar-brand { font-weight: 800; letter-spacing: 0.03em; }
+        .navbar-brand img { height: 44px; width: 44px; object-fit: cover; border: 2px solid rgba(255,255,255,.88); border-radius: 50%; box-shadow: 0 5px 14px rgba(0,0,0,.16); }
+        .home-link { width: 44px; height: 44px; display: grid; place-items: center; color: #fff; border: 1px solid rgba(255,255,255,.26); border-radius: 50%; transition: .2s ease; }
+        .home-link:hover, .home-link:focus-visible { color: var(--dark-red) !important; background: #fff; transform: translateY(-2px); outline: none; }
+
+        .page-heading { position: relative; }
+        .page-heading::before { content: ''; position: absolute; left: 50%; top: -18px; width: 100px; height: 100px; transform: translateX(-50%); background: radial-gradient(circle, rgba(196,162,90,.17), transparent 70%); pointer-events: none; }
+        .page-heading h2 { position: relative; font-family: 'Playfair Display', Georgia, serif; letter-spacing: -.02em; }
+        .heading-line { width: 70px; height: 4px; margin: 1rem auto 0; background: linear-gradient(90deg, var(--primary-red), var(--gold), var(--primary-green)); border-radius: 99px; }
+
+        .gallery-tools { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.5rem; padding: .7rem; background: rgba(255,255,255,.82); border: 1px solid rgba(37,48,41,.1); border-radius: 16px; box-shadow: 0 8px 28px rgba(40,35,29,.07); backdrop-filter: blur(8px); }
+        .search-wrap { position: relative; flex: 1; }
+        .search-wrap > i { position: absolute; left: .95rem; top: 50%; transform: translateY(-50%); color: #768078; pointer-events: none; }
+        .gallery-search { width: 100%; min-height: 45px; padding: .65rem 2.6rem .65rem 2.55rem; color: var(--text-color); background: #fff; border: 1px solid rgba(37,48,41,.14); border-radius: 12px; outline: none; transition: .2s ease; }
+        .gallery-search:focus { border-color: var(--gold); box-shadow: 0 0 0 4px rgba(196,162,90,.14); }
+        .clear-search { position: absolute; right: .42rem; top: 50%; width: 34px; height: 34px; display: none; place-items: center; transform: translateY(-50%); color: #707972; background: transparent; border: 0; border-radius: 50%; cursor: pointer; }
+        .clear-search.show { display: grid; }
+        .clear-search:hover { color: var(--primary-red); background: rgba(156,37,43,.07); }
+        .gallery-count { flex: 0 0 auto; padding: .58rem .82rem; color: var(--primary-green); background: rgba(36,107,60,.08); border: 1px solid rgba(36,107,60,.13); border-radius: 99px; font-size: .78rem; font-weight: 700; white-space: nowrap; }
+        .layout-toggle { width: 45px; height: 45px; display: grid; place-items: center; flex: 0 0 auto; color: var(--primary-green); background: rgba(36,107,60,.08); border: 1px solid rgba(36,107,60,.14); border-radius: 12px; cursor: pointer; transition: .2s ease; }
+        .layout-toggle:hover, .layout-toggle:focus-visible { color: #fff; background: var(--primary-green); outline: none; }
 
         /* Gallery Cards Upgrade */
         .cert-card {
-            border: none;
-            border-radius: 16px;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            border: 1px solid rgba(196,162,90,.22);
+            border-radius: 18px;
             overflow: hidden;
             position: relative;
             background: #fff;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 6px 20px rgba(45,38,30,.07);
+            text-align: left;
+            cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .cert-card:hover {
+        .cert-card:hover, .cert-card:focus-visible {
             transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+            border-color: rgba(196,162,90,.65);
+            box-shadow: 0 17px 42px rgba(45,38,30,.15);
+            outline: none;
         }
 
         .cert-img-container {
             position: relative;
             overflow: hidden;
             aspect-ratio: 4/3;
+            padding: .65rem;
+            background: linear-gradient(145deg, #ece8df, #faf8f3);
         }
 
         .cert-img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            background: #ece8df;
+            border-radius: 10px;
+            box-shadow: 0 4px 14px rgba(45,38,30,.1);
             transition: transform 0.5s ease;
         }
 
         .cert-card:hover .cert-img {
-            transform: scale(1.1);
+            transform: scale(1.035);
         }
+
+        .cert-label { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: .85rem 1rem; }
+        .cert-label strong { font-size: .86rem; }
+        .cert-label span { color: #748078; font-size: .73rem; }
+        .cert-label i { color: var(--primary-green); }
+        .gallery-large .gallery-item { width: 50%; }
+        .gallery-large .cert-img-container { aspect-ratio: 16 / 10; padding: 1rem; }
 
         /* View Overlay */
         .cert-overlay {
@@ -66,7 +126,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(20, 30, 24, 0.52);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -81,31 +141,46 @@
 
         /* Modal Upgrades */
         .modal-content {
-            background: #1a1a1a;
-            border-radius: 24px;
+            overflow: hidden;
+            background: #111713;
+            border-radius: 22px;
             border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 28px 90px rgba(0,0,0,.5);
         }
+
+        .modal-content:fullscreen { width: 100vw; height: 100vh; max-width: none; border-radius: 0; }
+        .modal-content:fullscreen .modal-body { height: auto; flex: 1 1 auto; }
+
+        .modal-header { min-height: 64px; background: rgba(255,255,255,.025); }
 
         .modal-body {
             position: relative;
-            height: 70vh;
+            height: min(72vh, 780px);
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden; /* Important for Panning */
-            background: radial-gradient(circle, #2c2c2c 0%, #1a1a1a 100%);
+            overflow: hidden;
+            background: radial-gradient(circle, #26322a 0%, #111713 70%);
             cursor: grab;
+            touch-action: none;
+            user-select: none;
         }
 
-        .modal-body:active { cursor: grabbing; }
+        .modal-body.dragging { cursor: grabbing; }
 
         #modalImage {
-            max-height: 100%;
-            max-width: 100%;
-            transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            max-height: 96%;
+            max-width: 96%;
+            object-fit: contain;
+            transition: opacity .16s ease;
             box-shadow: 0 10px 50px rgba(0,0,0,0.5);
-            pointer-events: none; /* Let the container handle mouse events */
+            pointer-events: none;
+            will-change: transform;
         }
+
+        .image-loader { position: absolute; z-index: 1; width: 42px; height: 42px; border: 3px solid rgba(255,255,255,.18); border-top-color: var(--gold); border-radius: 50%; animation: spin .75s linear infinite; }
+        .image-loader[hidden] { display: none; }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
         /* Controls Style */
         .btn-control {
@@ -127,6 +202,26 @@
             color: white;
         }
 
+        .btn-control:focus-visible { outline: 3px solid rgba(196,162,90,.45); outline-offset: 2px; }
+        .zoom-level { min-width: 54px; display: inline-grid; place-items: center; color: rgba(255,255,255,.72); font-size: .78rem; font-variant-numeric: tabular-nums; }
+        .fullscreen-control { width: 42px; height: 42px; margin-left: auto; color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); border-radius: 50%; cursor: pointer; transition: .2s; }
+        .fullscreen-control:hover { color: var(--dark-red); background: #fff; }
+
+        .thumbnail-strip { width: 100%; display: flex; justify-content: center; gap: .45rem; overflow-x: auto; padding: .35rem .25rem .1rem; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.25) transparent; }
+        .thumb-btn { width: 62px; height: 44px; flex: 0 0 auto; padding: 3px; overflow: hidden; background: rgba(255,255,255,.06); border: 2px solid transparent; border-radius: 8px; cursor: pointer; opacity: .55; transition: .2s ease; }
+        .thumb-btn img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+        .thumb-btn:hover { opacity: .9; }
+        .thumb-btn.active { border-color: var(--gold); opacity: 1; transform: translateY(-2px); }
+        .modal-footer { background: rgba(255,255,255,.02); }
+
+        .empty-gallery { display: none; padding: 3.5rem 1rem; color: #768078; background: rgba(255,255,255,.62); border: 1px dashed rgba(37,48,41,.22); border-radius: 16px; text-align: center; }
+        .empty-gallery.show { display: block; }
+        .empty-gallery i { display: block; margin-bottom: .6rem; color: var(--gold); font-size: 1.8rem; }
+
+        .back-to-top { position: fixed; z-index: 1020; right: 1rem; bottom: 1rem; width: 46px; height: 46px; display: grid; place-items: center; color: #fff; background: var(--primary-red); border: 0; border-radius: 50%; box-shadow: 0 10px 28px rgba(104,22,27,.28); cursor: pointer; opacity: 0; pointer-events: none; transform: translateY(18px); transition: .25s ease; }
+        .back-to-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+        .back-to-top:hover { background: var(--primary-green); }
+
         .image-counter {
             background: rgba(255,255,255,0.05);
             padding: 8px 16px;
@@ -136,7 +231,9 @@
         }
 
         .footer {
-            background: linear-gradient(135deg, #942222, #1b4d1e);
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--dark-red), var(--dark-green));
             color: #fff;
             padding: 4rem 0;
             margin-top: 5rem;
@@ -152,25 +249,39 @@
             animation: fadeIn 0.6s ease forwards;
             opacity: 0;
         }
+
+        @media (max-width: 767.98px) {
+            .gallery-tools { flex-wrap: wrap; }
+            .search-wrap { flex-basis: calc(100% - 58px); }
+            .gallery-count { order: 3; width: 100%; text-align: center; }
+            .gallery-large .gallery-item { width: 100%; }
+            .modal-body { height: 66vh; }
+            .modal-footer { padding: .8rem !important; }
+            .btn-control { width: 44px; height: 44px; }
+            .thumbnail-strip { justify-content: flex-start; padding-inline: 3rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+        }
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg shadow-sm" style="background: linear-gradient(90deg, #dc3545, #e53935);">
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.html" style="text-decoration:none; color:white;">
-                <img src="pfp.jpg" alt="1 PAG-ASA Logo" style="height:40px; width:auto; margin-right:10px;">
+                <img src="pfp.jpg" alt="1 PAG-ASA Logo" style="margin-right:10px;">
                 1 PAG-ASA
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="nav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item d-flex align-items-center">
-                        <!-- Updated house icon: larger size and pointing to campaign.html -->
-                        <a class="nav-link text-white" href="campaign.html"> 
-                            <div class="info-icon"><i class="bi bi-house" style="font-size: 2rem; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></i></div>
+                        <a class="nav-link home-link" href="campaign.html" aria-label="Return to campaign page" title="Campaign page"> 
+                            <i class="bi bi-house-door" aria-hidden="true"></i>
                         </a>
                     </li>
                 </ul>
@@ -179,14 +290,29 @@
     </nav>
 
     <section class="container py-5">
-        <div class="text-center mb-5">
+        <div class="text-center mb-5 page-heading">
             <h6 class="text-uppercase text-danger fw-bold mb-2" style="letter-spacing: 3px;">Recognition</h6>
             <h2 class="display-5 fw-bold">Our Impact & Certificates</h2>
             <p class="text-muted">Review our certified contributions to public health.</p>
-            <div class="mx-auto mt-3" style="width:60px;height:4px;background:var(--primary-green);border-radius:2px;"></div>
+            <div class="heading-line"></div>
         </div>
 
+        <div class="gallery-tools" role="search" aria-label="Certificate gallery tools">
+            <div class="search-wrap">
+                <i class="bi bi-search" aria-hidden="true"></i>
+                <label class="visually-hidden" for="gallerySearch">Search certificates</label>
+                <input class="gallery-search" id="gallerySearch" type="search" placeholder="Search certificates..." autocomplete="off">
+                <button class="clear-search" id="clearSearch" type="button" aria-label="Clear search"><i class="bi bi-x-lg"></i></button>
+            </div>
+            <span class="gallery-count" id="galleryCount" aria-live="polite">13 certificates</span>
+            <button class="layout-toggle" id="layoutToggle" type="button" aria-label="Use large gallery layout" aria-pressed="false" title="Change gallery layout"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i></button>
+        </div>
         <div class="row g-4" id="galleryGrid"></div>
+        <div class="empty-gallery" id="emptyGallery">
+            <i class="bi bi-search" aria-hidden="true"></i>
+            <strong>No certificates found.</strong>
+            <div>Try a different search.</div>
+        </div>
     </section>
 
     <!-- View Modal -->
@@ -194,24 +320,31 @@
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header border-0">
-                    <div class="image-counter" id="imageCounter"></div>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    <div>
+                        <div class="text-white fw-semibold small" id="modalTitle">Certificate Preview</div>
+                        <div class="image-counter mt-1" id="imageCounter"></div>
+                    </div>
+                    <button class="fullscreen-control" id="fullscreenBtn" type="button" aria-label="Enter full screen" title="Full screen"><i class="bi bi-fullscreen"></i></button>
+                    <button type="button" class="btn-close btn-close-white ms-2" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 
                 <div class="modal-body" id="zoomContainer">
+                    <div class="image-loader" id="imageLoader" aria-label="Loading certificate"></div>
                     <img id="modalImage" src="" alt="Certificate Preview">
                 </div>
 
-                <div class="modal-footer border-0 justify-content-between p-4">
-                    <button class="btn btn-control rounded-circle" id="prevBtn"><i class="bi bi-chevron-left"></i></button>
-                    
-                    <div class="d-flex gap-2">
-                        <button class="btn btn-control rounded-pill px-4" id="zoomOut"><i class="bi bi-dash-lg"></i></button>
-                        <button class="btn btn-control rounded-pill px-4" id="zoomIn"><i class="bi bi-plus-lg"></i></button>
-                        <button class="btn btn-control rounded-pill px-4" id="resetZoom" title="Reset View"><i class="bi bi-arrow-counterclockwise"></i></button>
+                <div class="modal-footer border-0 d-block p-3">
+                    <div class="d-flex align-items-center justify-content-between gap-2 mb-2">
+                        <button class="btn btn-control rounded-circle" id="prevBtn" type="button" aria-label="Previous certificate"><i class="bi bi-chevron-left"></i></button>
+                        <div class="d-flex align-items-center gap-2">
+                            <button class="btn btn-control rounded-circle" id="zoomOut" type="button" aria-label="Zoom out"><i class="bi bi-dash-lg"></i></button>
+                            <span class="zoom-level" id="zoomLevel">100%</span>
+                            <button class="btn btn-control rounded-circle" id="zoomIn" type="button" aria-label="Zoom in"><i class="bi bi-plus-lg"></i></button>
+                            <button class="btn btn-control rounded-circle" id="resetZoom" type="button" title="Reset View" aria-label="Reset view"><i class="bi bi-arrow-counterclockwise"></i></button>
+                        </div>
+                        <button class="btn btn-control rounded-circle" id="nextBtn" type="button" aria-label="Next certificate"><i class="bi bi-chevron-right"></i></button>
                     </div>
-
-                    <button class="btn btn-control rounded-circle" id="nextBtn"><i class="bi bi-chevron-right"></i></button>
+                    <div class="thumbnail-strip" id="thumbnailStrip" aria-label="Certificate thumbnails"></div>
                 </div>
             </div>
         </div>
@@ -225,97 +358,364 @@
         </div>
     </footer>
 
+    <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        const images = ['cert.jpg', 'cert2.jpg', 'cert3.jpg', 'cert4.jpg', 'cert5.jpg', 'cert6.jpg', 'cert7.jpg'];
-        let currentIndex = 0;
-        let scale = 1;
-        let isDragging = false;
-        let startX, startY, translateX = 0, translateY = 0;
+        'use strict';
+
+        const images = [
+            'cert4.jpg', 'cert13.jpg', 'cert3.jpg', 'cert2.jpg', 'cert5.jpg', 'cert6.jpg',
+            'cert7.jpg', 'cert8.jfif', 'cert9.jfif', 'cert10.jfif', 'cert11.jfif', 'cert12.png', 'cert.jpg'
+        ];
+
+        const certificates = images.map((src, index) => ({
+            src,
+            originalIndex: index,
+            title: `Certificate ${index + 1}`
+        }));
 
         const grid = document.getElementById('galleryGrid');
+        const emptyGallery = document.getElementById('emptyGallery');
+        const gallerySearch = document.getElementById('gallerySearch');
+        const clearSearch = document.getElementById('clearSearch');
+        const galleryCount = document.getElementById('galleryCount');
+        const layoutToggle = document.getElementById('layoutToggle');
+        const modalElement = document.getElementById('certModal');
+        const modalContent = modalElement.querySelector('.modal-content');
         const modalImage = document.getElementById('modalImage');
         const zoomContainer = document.getElementById('zoomContainer');
         const counter = document.getElementById('imageCounter');
-        const bModal = new bootstrap.Modal(document.getElementById('certModal'));
+        const modalTitle = document.getElementById('modalTitle');
+        const imageLoader = document.getElementById('imageLoader');
+        const zoomLevel = document.getElementById('zoomLevel');
+        const thumbnailStrip = document.getElementById('thumbnailStrip');
+        const fullscreenBtn = document.getElementById('fullscreenBtn');
+        const backToTop = document.getElementById('backToTop');
+        const bModal = new bootstrap.Modal(modalElement);
 
-        // Populate Grid
-        images.forEach((src, index) => {
-            const col = document.createElement('div');
-            col.className = 'col-md-4 col-lg-3 gallery-item';
-            col.style.animationDelay = `${index * 0.05}s`;
-            col.innerHTML = `
-                <div class='cert-card' onclick="openLightbox(${index})">
-                    <div class="cert-img-container">
-                        <img src='${src}' class='cert-img' alt='Certificate ${index + 1}' loading="lazy">
-                        <div class="cert-overlay">
-                            <span class="btn btn-light btn-sm rounded-pill fw-bold">View Certificate</span>
-                        </div>
-                    </div>
-                </div>`;
-            grid.appendChild(col);
-        });
+        let visibleCertificates = [...certificates];
+        let currentIndex = 0;
+        let scale = 1;
+        let translateX = 0;
+        let translateY = 0;
+        let largeLayout = false;
+        let panStart = null;
+        let pinchStart = null;
+        let swipeStart = null;
+        const activePointers = new Map();
+
+        function renderGallery() {
+            const query = gallerySearch.value.trim().toLowerCase();
+            visibleCertificates = certificates.filter(item =>
+                `${item.title} ${item.src}`.toLowerCase().includes(query)
+            );
+
+            grid.replaceChildren();
+            grid.hidden = visibleCertificates.length === 0;
+            emptyGallery.classList.toggle('show', visibleCertificates.length === 0);
+            galleryCount.textContent = `${visibleCertificates.length} ${visibleCertificates.length === 1 ? 'certificate' : 'certificates'}`;
+
+            visibleCertificates.forEach((item, position) => {
+                const col = document.createElement('div');
+                col.className = 'col-12 col-sm-6 col-md-4 col-lg-3 gallery-item';
+                col.style.animationDelay = `${Math.min(position * 0.05, 0.4)}s`;
+
+                const button = document.createElement('button');
+                button.className = 'cert-card';
+                button.type = 'button';
+                button.setAttribute('aria-label', `View ${item.title}`);
+                button.innerHTML = `
+                    <span class="cert-img-container d-block">
+                        <img src="${item.src}" class="cert-img" alt="${item.title}" loading="lazy" decoding="async">
+                        <span class="cert-overlay">
+                            <span class="btn btn-light btn-sm rounded-pill fw-bold"><i class="bi bi-arrows-fullscreen me-1"></i>View Certificate</span>
+                        </span>
+                    </span>
+                    <span class="cert-label">
+                        <strong>${item.title}</strong>
+                        <span>View details <i class="bi bi-arrow-up-right"></i></span>
+                    </span>`;
+
+                const cardImage = button.querySelector('.cert-img');
+                cardImage.addEventListener('error', () => {
+                    cardImage.style.display = 'none';
+                    const message = document.createElement('span');
+                    message.className = 'h-100 d-grid text-muted text-center align-items-center';
+                    message.innerHTML = '<span><i class="bi bi-image d-block fs-3 mb-2"></i>Preview unavailable</span>';
+                    button.querySelector('.cert-img-container').prepend(message);
+                }, { once: true });
+
+                button.addEventListener('click', () => openLightbox(position));
+                col.appendChild(button);
+                grid.appendChild(col);
+            });
+        }
 
         function openLightbox(index) {
-            currentIndex = index;
-            resetZoomState();
+            if (!visibleCertificates.length) return;
+            currentIndex = Math.max(0, Math.min(index, visibleCertificates.length - 1));
+            resetZoomState(false);
             updateModal();
             bModal.show();
         }
 
         function updateModal() {
+            const item = visibleCertificates[currentIndex];
+            if (!item) return;
+
+            imageLoader.hidden = false;
             modalImage.style.opacity = '0';
-            setTimeout(() => {
-                modalImage.src = images[currentIndex];
-                counter.innerText = `${currentIndex + 1} / ${images.length}`;
+            modalImage.onload = () => {
+                imageLoader.hidden = true;
                 modalImage.style.opacity = '1';
-            }, 200);
+                clampPan();
+                preloadNearbyImages();
+            };
+            modalImage.onerror = () => {
+                imageLoader.hidden = true;
+                modalImage.style.opacity = '.25';
+                counter.textContent = 'Preview unavailable';
+            };
+            modalImage.src = item.src;
+            modalImage.alt = `${item.title} preview`;
+            modalTitle.textContent = item.title;
+            counter.textContent = `${currentIndex + 1} / ${visibleCertificates.length}`;
+            renderThumbnails();
         }
 
-        function resetZoomState() {
+        function renderThumbnails() {
+            thumbnailStrip.replaceChildren();
+            visibleCertificates.forEach((item, index) => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = `thumb-btn${index === currentIndex ? ' active' : ''}`;
+                button.setAttribute('aria-label', `View ${item.title}`);
+                button.setAttribute('aria-current', index === currentIndex ? 'true' : 'false');
+                button.innerHTML = `<img src="${item.src}" alt="" loading="lazy">`;
+                button.addEventListener('click', () => showCertificate(index));
+                thumbnailStrip.appendChild(button);
+            });
+
+            requestAnimationFrame(() => {
+                thumbnailStrip.querySelector('.active')?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            });
+        }
+
+        function showCertificate(index) {
+            if (!visibleCertificates.length) return;
+            currentIndex = (index + visibleCertificates.length) % visibleCertificates.length;
+            resetZoomState(false);
+            updateModal();
+        }
+
+        function preloadNearbyImages() {
+            if (visibleCertificates.length < 2) return;
+            [-1, 1].forEach(offset => {
+                const index = (currentIndex + offset + visibleCertificates.length) % visibleCertificates.length;
+                const preload = new Image();
+                preload.src = visibleCertificates[index].src;
+            });
+        }
+
+        function resetZoomState(animate = true) {
             scale = 1;
             translateX = 0;
             translateY = 0;
+            modalImage.style.transition = animate ? 'transform .22s ease, opacity .16s ease' : 'opacity .16s ease';
             applyTransform();
+            window.setTimeout(() => { modalImage.style.transition = 'opacity .16s ease'; }, 230);
+        }
+
+        function setZoom(nextScale, origin = null) {
+            const previousScale = scale;
+            scale = Math.min(4, Math.max(1, Number(nextScale.toFixed(2))));
+
+            if (origin && previousScale !== scale) {
+                const ratio = scale / previousScale;
+                translateX = origin.x - (origin.x - translateX) * ratio;
+                translateY = origin.y - (origin.y - translateY) * ratio;
+            }
+            if (scale === 1) {
+                translateX = 0;
+                translateY = 0;
+            }
+            clampPan();
+            applyTransform();
+        }
+
+        function clampPan() {
+            const baseWidth = modalImage.offsetWidth || 0;
+            const baseHeight = modalImage.offsetHeight || 0;
+            const maxX = Math.max(0, (baseWidth * scale - zoomContainer.clientWidth) / 2 + 35);
+            const maxY = Math.max(0, (baseHeight * scale - zoomContainer.clientHeight) / 2 + 35);
+            translateX = Math.min(maxX, Math.max(-maxX, translateX));
+            translateY = Math.min(maxY, Math.max(-maxY, translateY));
         }
 
         function applyTransform() {
-            modalImage.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+            modalImage.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`;
+            zoomLevel.textContent = `${Math.round(scale * 100)}%`;
         }
 
-        // Controls
-        document.getElementById('nextBtn').onclick = () => { currentIndex = (currentIndex + 1) % images.length; resetZoomState(); updateModal(); };
-        document.getElementById('prevBtn').onclick = () => { currentIndex = (currentIndex - 1 + images.length) % images.length; resetZoomState(); updateModal(); };
-        
-        document.getElementById('zoomIn').onclick = () => { if(scale < 4) scale += 0.4; applyTransform(); };
-        document.getElementById('zoomOut').onclick = () => { if(scale > 0.8) scale -= 0.4; applyTransform(); };
-        document.getElementById('resetZoom').onclick = () => resetZoomState();
+        function pointInStage(event) {
+            const rect = zoomContainer.getBoundingClientRect();
+            return {
+                x: event.clientX - rect.left - rect.width / 2,
+                y: event.clientY - rect.top - rect.height / 2
+            };
+        }
 
-        // Panning Logic
-        zoomContainer.addEventListener('mousedown', e => {
-            if (scale <= 1) return;
-            isDragging = true;
-            startX = e.clientX - translateX;
-            startY = e.clientY - translateY;
+        function pointerDistance(points) {
+            return Math.hypot(points[1].clientX - points[0].clientX, points[1].clientY - points[0].clientY);
+        }
+
+        function pointerMidpoint(points) {
+            const rect = zoomContainer.getBoundingClientRect();
+            return {
+                x: (points[0].clientX + points[1].clientX) / 2 - rect.left - rect.width / 2,
+                y: (points[0].clientY + points[1].clientY) / 2 - rect.top - rect.height / 2
+            };
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                modalContent.requestFullscreen?.().catch(() => {});
+            } else {
+                document.exitFullscreen?.();
+            }
+        }
+
+        function updateFullscreenButton() {
+            const isFullscreen = Boolean(document.fullscreenElement);
+            fullscreenBtn.innerHTML = `<i class="bi bi-${isFullscreen ? 'fullscreen-exit' : 'fullscreen'}"></i>`;
+            fullscreenBtn.setAttribute('aria-label', isFullscreen ? 'Exit full screen' : 'Enter full screen');
+        }
+
+        gallerySearch.addEventListener('input', () => {
+            clearSearch.classList.toggle('show', Boolean(gallerySearch.value));
+            renderGallery();
         });
 
-        window.addEventListener('mousemove', e => {
-            if (!isDragging) return;
-            translateX = e.clientX - startX;
-            translateY = e.clientY - startY;
+        clearSearch.addEventListener('click', () => {
+            gallerySearch.value = '';
+            clearSearch.classList.remove('show');
+            renderGallery();
+            gallerySearch.focus();
+        });
+
+        layoutToggle.addEventListener('click', () => {
+            largeLayout = !largeLayout;
+            grid.classList.toggle('gallery-large', largeLayout);
+            layoutToggle.setAttribute('aria-pressed', String(largeLayout));
+            layoutToggle.setAttribute('aria-label', largeLayout ? 'Use compact gallery layout' : 'Use large gallery layout');
+            layoutToggle.innerHTML = `<i class="bi bi-${largeLayout ? 'grid' : 'grid-3x3-gap'}" aria-hidden="true"></i>`;
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', () => showCertificate(currentIndex + 1));
+        document.getElementById('prevBtn').addEventListener('click', () => showCertificate(currentIndex - 1));
+        document.getElementById('zoomIn').addEventListener('click', () => setZoom(scale + .25));
+        document.getElementById('zoomOut').addEventListener('click', () => setZoom(scale - .25));
+        document.getElementById('resetZoom').addEventListener('click', () => resetZoomState());
+        fullscreenBtn.addEventListener('click', toggleFullscreen);
+
+        zoomContainer.addEventListener('wheel', event => {
+            event.preventDefault();
+            setZoom(scale + (event.deltaY < 0 ? .18 : -.18), pointInStage(event));
+        }, { passive: false });
+
+        zoomContainer.addEventListener('dblclick', event => {
+            scale > 1 ? resetZoomState() : setZoom(2, pointInStage(event));
+        });
+
+        zoomContainer.addEventListener('pointerdown', event => {
+            zoomContainer.setPointerCapture(event.pointerId);
+            activePointers.set(event.pointerId, event);
+            if (activePointers.size === 1) {
+                panStart = { clientX: event.clientX, clientY: event.clientY, x: translateX, y: translateY };
+                swipeStart = { x: event.clientX, y: event.clientY, time: performance.now() };
+            } else if (activePointers.size === 2) {
+                const points = [...activePointers.values()];
+                pinchStart = { distance: pointerDistance(points), scale, midpoint: pointerMidpoint(points) };
+            }
+            zoomContainer.classList.add('dragging');
+        });
+
+        zoomContainer.addEventListener('pointermove', event => {
+            if (!activePointers.has(event.pointerId)) return;
+            activePointers.set(event.pointerId, event);
+
+            if (activePointers.size === 2 && pinchStart) {
+                const points = [...activePointers.values()];
+                setZoom(pinchStart.scale * (pointerDistance(points) / Math.max(1, pinchStart.distance)), pinchStart.midpoint);
+            } else if (activePointers.size === 1 && scale > 1 && panStart) {
+                translateX = panStart.x + event.clientX - panStart.clientX;
+                translateY = panStart.y + event.clientY - panStart.clientY;
+                clampPan();
+                applyTransform();
+            }
+        });
+
+        function endPointer(event) {
+            const wasSinglePointer = activePointers.size === 1;
+            activePointers.delete(event.pointerId);
+            if (zoomContainer.hasPointerCapture(event.pointerId)) zoomContainer.releasePointerCapture(event.pointerId);
+
+            if (wasSinglePointer && scale === 1 && swipeStart) {
+                const deltaX = event.clientX - swipeStart.x;
+                const deltaY = event.clientY - swipeStart.y;
+                const elapsed = performance.now() - swipeStart.time;
+                if (elapsed < 650 && Math.abs(deltaX) > 60 && Math.abs(deltaX) > Math.abs(deltaY) * 1.3) {
+                    showCertificate(currentIndex + (deltaX < 0 ? 1 : -1));
+                }
+            }
+
+            if (activePointers.size < 2) pinchStart = null;
+            if (activePointers.size === 0) {
+                panStart = null;
+                swipeStart = null;
+                zoomContainer.classList.remove('dragging');
+            }
+        }
+
+        zoomContainer.addEventListener('pointerup', endPointer);
+        zoomContainer.addEventListener('pointercancel', endPointer);
+
+        modalElement.addEventListener('hidden.bs.modal', () => {
+            if (document.fullscreenElement) document.exitFullscreen?.();
+            activePointers.clear();
+            resetZoomState(false);
+        });
+
+        document.addEventListener('fullscreenchange', updateFullscreenButton);
+        document.addEventListener('keydown', event => {
+            const isShown = modalElement.classList.contains('show');
+            if (!isShown && event.key === '/' && document.activeElement !== gallerySearch) {
+                event.preventDefault();
+                gallerySearch.focus();
+                return;
+            }
+            if (!isShown) return;
+            if (event.key === 'ArrowRight') showCertificate(currentIndex + 1);
+            else if (event.key === 'ArrowLeft') showCertificate(currentIndex - 1);
+            else if (event.key === '+' || event.key === '=') setZoom(scale + .25);
+            else if (event.key === '-') setZoom(scale - .25);
+            else if (event.key === '0') resetZoomState();
+            else if (event.key.toLowerCase() === 'f') toggleFullscreen();
+        });
+
+        window.addEventListener('resize', () => {
+            clampPan();
             applyTransform();
         });
 
-        window.addEventListener('mouseup', () => isDragging = false);
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('show', window.scrollY > 500);
+        }, { passive: true });
 
-        // Keyboard support
-        document.addEventListener('keydown', e => {
-            const isShown = document.getElementById('certModal').classList.contains('show');
-            if (!isShown) return;
-            if (e.key === 'ArrowRight') document.getElementById('nextBtn').click();
-            if (e.key === 'ArrowLeft') document.getElementById('prevBtn').click();
-            if (e.key === 'Escape') bModal.hide();
-        });
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        renderGallery();
     </script>
 </body>
 </html>
