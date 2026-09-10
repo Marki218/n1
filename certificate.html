@@ -364,23 +364,25 @@
     <script>
         'use strict';
 
-        const certificates = [
-            { src: 'cert4.jpg',   title: 'PCNC Certificate of Accreditation' },
-            { src: 'cert13.jpg',  title: 'Donee Institution Status' },
-            { src: 'cert3.jpg',   title: 'DSWD Certificate of Registration & License to Operate' },
-            { src: 'cert2.jpg',   title: 'SEC Certificate of Incorporation' },
-            { src: 'cert5.jpg',   title: 'Certificate of Tax Exemption' },
-            { src: 'cert6.jpg',   title: 'Barangay Clearance – Paligsahan, Quezon City' },
-            { src: 'cert7.jpg',   title: 'Barangay Clearance – Mayamot, Antipolo City' },
-            { src: 'cert8.jfif',  title: 'Quezon City Mayor’s Permit' },
-            { src: 'cert9.jfif',  title: 'BIR Form 2303 – Quezon City Office' },
-            { src: 'cert10.jfif', title: 'BIR Form 2303 – Antipolo Office (Registration Seal Badge)' },
-            { src: 'cert11.jfif', title: 'BIR Form 2303 – Quezon City Office (Registration Seal Badge)' },
-            { src: 'cert12.png',  title: 'BIR Form 2303 – Antipolo Office' },
-            { src: 'cert.jpg',    title: 'Donation Receipt' },
-            { src: 'cert14.jfif', title: 'BIR Donee Institution Certificate of Registration' }
-        ].map((item, index) => ({ ...item, originalIndex: index }));
-
+      const certificates = [
+    { src: 'cert4.jpg',   title: 'DSWD Certificate of Registration & License to Operate' },
+    { src: 'cert13.jpg',  title: 'PCNC Certificate of Accreditation' },
+    { src: 'cert3.jpg',   title: 'Certificate of Tax Exemption' },
+    { src: 'cert14.jfif', title: 'BIR Donee Institution Certificate of Registration' },
+    { src: 'cert5.jpg',   title: 'Certificate of Tax Exemption' },
+    { src: 'cert6.jpg',   title: 'Quezon City Mayor’s Permit' },
+    { src: 'cert7.jpg',   title: 'SEC Amended Articles of Incorporation' },
+    { src: 'cert8.jfif',  title: 'Quezon City Mayor’s Permit' },
+    { src: 'cert9.jfif',  title: 'BIR Form 2303 – Quezon City Office' },
+    { src: 'cert10.jfif', title: 'BIR Form 2303 – Antipolo Office (Registration Seal Badge)' },
+    { src: 'cert11.jfif', title: 'BIR Form 2303 – Quezon City Office (Registration Seal Badge)' },
+    { src: 'cert12.png',  title: 'BIR Form 2303 – Antipolo Office' },
+    { src: 'cert.jpg',    title: 'Barangay Clearance – Mayamot, Antipolo City' },
+    { src: 'cert2.jpg',   title: 'SEC Certificate of Incorporation' }
+].map((item, index) => ({
+    ...item,
+    originalIndex: index
+}));
         const grid = document.getElementById('galleryGrid');
         const emptyGallery = document.getElementById('emptyGallery');
         const gallerySearch = document.getElementById('gallerySearch');
