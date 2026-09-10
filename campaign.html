@@ -1,439 +1,650 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Learn about 1 PAG-ASA Kidneys Alagaan Natin Corp., its mission, vision, values, history, offices, certificates, and community programs.">
+  <title>About 1 PAG-ASA | Kidneys Alagaan Natin Corp.</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
-<title>About 1 PAG-ASA</title>
+  <style>
+    :root {
+      --red: #dc3545;
+      --red-dark: #a61f2b;
+      --green: #138a4b;
+      --green-dark: #0b5f35;
+      --ink: #15202b;
+      --muted: #667085;
+      --cream: #fffaf7;
+      --surface: #ffffff;
+      --line: #e9edf2;
+      --shadow: 0 18px 50px rgba(16, 24, 40, .10);
+      --shadow-lg: 0 26px 70px rgba(16, 24, 40, .16);
+    }
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-<style>
+    * { box-sizing: border-box; }
 
-:root {
-    --primary-red: #e7e0e0;
-    --primary-green: #22c55e;
-    --dark-bg: #0f172a;
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
-}
+    html { scroll-behavior: smooth; }
 
-body {
-    /* Smoother, diagonal gradient for a more professional look */
-    background: linear-gradient(135deg, #f53636 0%, #6d6666 100%);
-    background-attachment: fixed;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    color: #f8fafc;
-    margin: 0;
-    line-height: 1.6;
-}
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(220,53,69,.06), transparent 26%),
+        radial-gradient(circle at 95% 10%, rgba(19,138,75,.07), transparent 28%),
+        #f7f9fb;
+      font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
 
-/* NAVBAR */
-.navbar {
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px); /* Blur effect for modern feel */
-    border-bottom: 1px solid var(--glass-border);
-    padding: 1rem 2rem;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+    a { text-decoration: none; }
 
-/* HERO SECTION */
-.hero {
-    background: linear-gradient(rgba(252, 252, 252, 0.5), rgba(15, 23, 42, 0.8)),
-                url("poster1.jpg") center/cover no-repeat;
-    height: 70vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-shadow: 0 4px 12px rgba(230, 223, 223, 0.5);
-}
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1030;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(21,32,43,.08);
+    }
 
-.hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    background: linear-gradient(to right, #ff4d4d, #4dff88);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+    .navbar-brand {
+      font-weight: 800;
+      letter-spacing: -.02em;
+      color: var(--ink) !important;
+    }
 
-/* INFO BOX (Glassmorphism) */
-.info-box {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
-    padding: 40px;
-    border-radius: 24px;
-    box-shadow: 0 15px 35px rgba(248, 248, 248, 0.2);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    color: #e2e8f0;
-}
+    .brand-logo {
+      width: 46px;
+      height: 46px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid rgba(21,32,43,.08);
+      box-shadow: 0 8px 24px rgba(16,24,40,.08);
+    }
 
-.info-box:hover {
-    transform: translateY(-12px) scale(1.02);
-    background: rgba(239, 68, 68, 0.15); /* Subtle red glow */
-    border-color: var(--primary-red);
-    box-shadow: 0 25px 50px rgba(239, 68, 68, 0.2);
-}
+    .brand-sub {
+      display: block;
+      font-size: .72rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-top: -2px;
+    }
 
-/* ICON */
-.info-icon {
-    font-size: 50px;
-    margin-bottom: 15px;
-    background: linear-gradient(45deg, var(--primary-red), var(--primary-green));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-}
+    .nav-link {
+      color: #344054 !important;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: .6rem .9rem !important;
+    }
 
-/* CERTIFICATES */
-.cert-img {
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    filter: grayscale(20%);
-    border: 2px solid transparent;
-}
+    .nav-link:hover { background: #f2f4f7; color: var(--red) !important; }
 
-.cert-img:hover {
-    transform: scale(1.08) rotate(1deg);
-    filter: grayscale(0%);
-    border-color: var(--primary-green);
-    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
-}
+    .home-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      background: var(--red);
+      color: #fff !important;
+      padding: .65rem 1rem !important;
+      border-radius: 999px;
+      box-shadow: 0 10px 25px rgba(220,53,69,.25);
+    }
 
-/* FOOTER */
-.footer {
-    background: #000;
-    border-top: 1px solid var(--glass-border);
-    color: #94a3b8;
-    text-align: center;
-    padding: 40px 20px;
-    margin-top: 50px;
-}
-</style>
-</style>
+    .home-pill:hover { background: var(--red-dark); color: #fff !important; }
 
+    .hero {
+      position: relative;
+      min-height: 72vh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      isolation: isolate;
+      background:
+        linear-gradient(110deg, rgba(14,22,30,.88), rgba(14,22,30,.50)),
+        url("poster1.jpg") center/cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 150px;
+      background: linear-gradient(to top, #f7f9fb, transparent);
+      z-index: -1;
+    }
+
+    .hero-content {
+      max-width: 860px;
+      color: #fff;
+      text-align: center;
+      padding: 7rem 1rem 8rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .5rem .8rem;
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      backdrop-filter: blur(8px);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: .95;
+      letter-spacing: -.055em;
+      font-weight: 900;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 .accent { color: #ff6b76; }
+
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto 1.8rem;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,.88);
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: .75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-main {
+      background: var(--red);
+      color: #fff;
+      font-weight: 800;
+      padding: .85rem 1.2rem;
+      border-radius: 999px;
+      border: 0;
+      box-shadow: 0 12px 32px rgba(220,53,69,.32);
+    }
+
+    .btn-main:hover { background: var(--red-dark); color: #fff; transform: translateY(-1px); }
+
+    .btn-ghost {
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.35);
+      background: rgba(255,255,255,.10);
+      padding: .85rem 1.2rem;
+      border-radius: 999px;
+      font-weight: 800;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-ghost:hover { background: rgba(255,255,255,.18); color: #fff; }
+
+    .trust-strip {
+      margin-top: -52px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .trust-card {
+      border-radius: 24px;
+      background: #fff;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(21,32,43,.06);
+      padding: 1.2rem;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      padding: .7rem .85rem;
+      border-radius: 18px;
+    }
+
+    .trust-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      font-size: 1.2rem;
+      background: #fff2f3;
+      color: var(--red);
+      flex: 0 0 auto;
+    }
+
+    .trust-item:nth-child(2) .trust-icon { background: #edf9f2; color: var(--green); }
+    .trust-item:nth-child(3) .trust-icon { background: #f3f4f6; color: #475467; }
+
+    .section {
+      padding: 5.5rem 0;
+    }
+
+    .section-kicker {
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: .78rem;
+      font-weight: 900;
+      margin-bottom: .75rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      letter-spacing: -.045em;
+      line-height: 1.05;
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 1.03rem;
+    }
+
+    .feature-card {
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255,255,255,.94);
+      padding: 1.5rem;
+      box-shadow: 0 12px 36px rgba(16,24,40,.06);
+      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+    }
+
+    .feature-card::before {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      right: -50px;
+      top: -55px;
+      background: rgba(220,53,69,.07);
+      transition: transform .3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+      border-color: rgba(220,53,69,.22);
+    }
+
+    .feature-card:hover::before { transform: scale(1.22); }
+
+    .feature-icon {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #fff1f2, #fff);
+      color: var(--red);
+      border: 1px solid #fde2e4;
+      font-size: 1.45rem;
+      margin-bottom: 1.15rem;
+      box-shadow: 0 8px 22px rgba(220,53,69,.10);
+    }
+
+    .feature-card.green .feature-icon {
+      color: var(--green);
+      background: linear-gradient(135deg, #ebf9f1, #fff);
+      border-color: #d5f0e0;
+      box-shadow: 0 8px 22px rgba(19,138,75,.10);
+    }
+
+    .feature-card h3 {
+      font-size: 1.12rem;
+      font-weight: 900;
+      letter-spacing: -.015em;
+      margin-bottom: .45rem;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      margin-bottom: 1.1rem;
+      font-size: .94rem;
+    }
+
+    .feature-link {
+      color: var(--ink);
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      font-size: .92rem;
+    }
+
+    .feature-link i { transition: transform .2s ease; }
+    .feature-card:hover .feature-link i { transform: translateX(4px); }
+
+    .impact-panel {
+      background: linear-gradient(135deg, #111827 0%, #1f2937 55%, #14251b 100%);
+      color: #fff;
+      border-radius: 32px;
+      padding: clamp(2rem, 5vw, 4rem);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .impact-panel::after {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      right: -130px;
+      bottom: -140px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(220,53,69,.34), transparent 68%);
+    }
+
+    .impact-panel p { color: rgba(255,255,255,.75); max-width: 720px; }
+
+    .impact-tags {
+      display: flex;
+      gap: .6rem;
+      flex-wrap: wrap;
+      margin-top: 1.4rem;
+    }
+
+    .impact-tags span {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .55rem .75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.08);
+      font-weight: 700;
+      font-size: .85rem;
+    }
+
+    .footer {
+      background: #101828;
+      color: #d0d5dd;
+      padding: 3.5rem 0 2rem;
+      margin-top: 5rem;
+    }
+
+    .footer-logo {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .footer h4 { color: #fff; font-weight: 900; margin: 0; }
+    .footer small { color: #98a2b3; }
+
+    .footer-links a {
+      color: #d0d5dd;
+      margin-left: 1rem;
+      font-weight: 700;
+    }
+
+    .footer-links a:hover { color: #fff; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: .6s ease; }
+    .reveal.show { opacity: 1; transform: none; }
+
+    @media (max-width: 767.98px) {
+      .hero { min-height: 66vh; }
+      .hero-content { padding-top: 6rem; }
+      .trust-strip { margin-top: -32px; }
+      .section { padding: 4rem 0; }
+      .footer-links a { margin-left: 0; margin-right: 1rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
- 
-
-<nav class="navbar navbar-expand-lg shadow-sm" style="background: linear-gradient(90deg, #dc3545, #e53935);">
+  <nav class="navbar navbar-expand-lg site-nav" aria-label="Main navigation">
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="index.html" style="text-decoration:none; color:white;">
-            <img src="pfp.jpg" alt="1 PAG-ASA Logo" style="height:40px; width:auto; margin-right:10px;">
-            1 PAG-ASA
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="nav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html"> <div class="info-icon"><i class="bi bi-house"></i></div>
-                </li>
-                
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <img src="pfp.jpg" class="brand-logo" alt="1 PAG-ASA logo">
+        <span>1 PAG-ASA<span class="brand-sub">Kidneys Alagaan Natin Corp.</span></span>
+      </a>
 
-<div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-
-<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
-<span class="navbar-toggler-icon"></span>
-</button>
-
-<div class="collapse navbar-collapse" id="nav">
-
-<ul class="navbar-nav ms-auto">
-
-<li class="nav-item"><a class="nav-link" href="Untitled-1.html">Home</a></li>
-<li class="nav-item"><a class="nav-link" href="history.html">ABOUT US</a></li>
-
-</ul>
-
-</div>
-</div>
-</nav>
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="container">
-
-<h1 class="fw-bold">1 PAG-ASA</h1>
-<p>Promoting awareness, prevention, and community health for a better future.</p>
-
-</div>
-
-</section>
-
-
-
-<!-- ABOUT PAGASA -->
-
-<!-- ABOUT PAGASA -->
-
-<section class="container py-5">
-
-<h2 class="text-center mb-5 fw-bold">What is 1 PAG-ASA?</h2>
-
-<div class="row g-4 text-center">
-<div class="row g-4 text-center">
-
-<div class="col-md-4">
-<div class="info-box">
-<a href="about us.html" style="text-decoration:none; color:black;">
-<div class="info-icon"><i class="bi bi-bullseye"></i></div>
-<h3>PURPOSE</h3>
-</a>
-</div>
-</div>
-
-<div class="col-md-4">
-<div class="info-box">
-<a href="MISSION.html" style="text-decoration:none; color:black;">
-<div class="info-icon"><i class="bi bi-flag"></i></div>
-<h3>MISSION</h3>
-</a>
-</div>
-</div>
-
-<div class="col-md-4">
-<div class="info-box">
-<a href="vision.html" style="text-decoration:none; color:black;">
-<div class="info-icon"><i class="bi bi-eye"></i></div>
-<h3>VISION</h3>
-</a>
-</div>
-</div>
-
-<div class="col-md-4">
-<div class="info-box">
-<a href="core values.html" style="text-decoration:none; color:black;">
-<div class="info-icon"><i class="bi bi-heart"></i></div>
-<h3>CORE VALUES</h3>
-</a>
-</div>
-</div>
-
-<div class="col-md-4">
-<div class="info-box">
-<a href="strategies.html" style="text-decoration:none; color:black;">
-<div class="info-icon"><i class="bi bi-lightbulb"></i></div>
-<h3>STRATEGIES</h3>
-</a>
-</div>
-</div>
-
-<div class="col-md-4">
-<div class="info-box">
-<a href="goals.html" style="text-decoration:none; color:black;">
-<div class="info-icon"><i class="bi bi-trophy"></i></div>
-<h3>GOALS</h3>
-</a>
-</div>
-</div>
-
-<div class="col-md-4">
-<div class="info-box">
-<a href="founding fathers.html" style="text-decoration:none; color:black;">
-<div class="info-icon"><i class="bi bi-people"></i></div>
-<h3>FOUNDING FATHERS</h3>
-</a>
-</div>
-</div>
-
-<div class="col-md-4">
-<div class="info-box">
-<a href="certificate.html" style="text-decoration:none; color:black;">
-<div class="info-icon"><i class="bi bi-book"></i></div>
-<h3>CERTIFICATES
-  
-
-</h3>
-</a>
-</div>
-</div>
-
-<div class="col-md-4">
-<div class="info-box">
-<a href="1PAGASA.html" style="text-decoration:none; color:black;">
-<div class="info-icon"><i class="bi bi-file-earmark-text"></i></div>
-<h3>HISTORY
-
-</div>
-
-</div>
-<div class="col-md-4">
-<div class="info-box">
-<a href="lemon tree.html" style="text-decoration:none; color:black;">
-<div class="info-icon"><i class="bi bi-map"></i></div>
-<h3>LEMON TREE OFFICE
-
-  </h3>
-</a>
-</div>
-</div>
-
-  <div class="col-md-4">
-<div class="info-box">
-<a href="filinvest east homes.html" style="text-decoration:none; color:black;">
-<div class="info-icon"><i class="bi bi-map"></i></div>
-<h3>ANTIPOLO OFFICE
-  
-
-</h3>
-</a>
-</div>
-</div>
-
-<div class="col-md-4">
-    <div class="info-box">
-        <a href="donation drive.html" style="text-decoration:none; color:black;">
-
-            <div class="info-icon">
-                <i class="bi bi-heart-fill text-danger"></i>
-            </div>
-
-            <h3>DONATION DRIVE</h3>
-
-        </a>
-    </div>
-</div>
-  
-</h3>
-</a>
-</div>
-</div>
-</section>
-
-
-<!-- PRO MODAL -->
-<div class="modal fade" id="certModal" tabindex="-1">
-  <div class="modal-dialog modal-xl modal-dialog-centered">
-    <div class="modal-content bg-dark border-0 text-center position-relative">
-
-      <!-- CLOSE -->
-      <button class="btn btn-light position-absolute top-0 end-0 m-3" data-bs-dismiss="modal">✕</button>
-
-      <!-- IMAGE -->
-      <div class="modal-body">
-        <img id="modalImage" class="img-fluid rounded" style="transition: transform 0.3s;">
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#explore">Explore</a></li>
+          <li class="nav-item"><a class="nav-link home-pill ms-lg-2" href="index.html"><i class="bi bi-house-door"></i> Home</a></li>
+        </ul>
       </div>
+    </div>
+  </nav>
 
-      <!-- CONTROLS -->
-      <div class="d-flex justify-content-center gap-3 pb-3">
-
-        <button class="btn btn-light" id="prevBtn">⬅</button>
-        <button class="btn btn-light" id="zoomIn">🔍+</button>
-        <button class="btn btn-light" id="zoomOut">🔍-</button>
-        <a id="downloadBtn" class="btn btn-success" download>⬇ Download</a>
-        <button class="btn btn-light" id="nextBtn">➡</button>
-
+  <header class="hero" id="top">
+    <div class="hero-content container">
+      <div class="eyebrow"><i class="bi bi-heart-pulse-fill"></i> Kidney Health • Compassion • Community</div>
+      <h1>About <span class="accent">1 PAG-ASA</span></h1>
+      <p>Promoting awareness, prevention, patient support, and stronger communities through meaningful kidney-health advocacy and service.</p>
+      <div class="hero-actions">
+        <a href="#explore" class="btn-main">Explore Our Organization <i class="bi bi-arrow-down-short"></i></a>
+        <a href="certificate.html" class="btn-ghost"><i class="bi bi-patch-check"></i> View Certificates</a>
       </div>
+    </div>
+  </header>
 
+  <div class="container trust-strip">
+    <div class="trust-card row g-2">
+      <div class="col-md-4 trust-item">
+        <div class="trust-icon"><i class="bi bi-heart-pulse"></i></div>
+        <div><strong>Kidney Health Advocacy</strong><div class="text-secondary small">Education, prevention, awareness</div></div>
+      </div>
+      <div class="col-md-4 trust-item">
+        <div class="trust-icon"><i class="bi bi-people"></i></div>
+        <div><strong>Community Support</strong><div class="text-secondary small">Compassion-driven programs</div></div>
+      </div>
+      <div class="col-md-4 trust-item">
+        <div class="trust-icon"><i class="bi bi-shield-check"></i></div>
+        <div><strong>Accountability</strong><div class="text-secondary small">Governance, permits, recognitions</div></div>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- FOOTER -->
- 
-<footer class="footer text-center text-white py-3">
+  <main>
+    <section class="section" id="about">
+      <div class="container text-center reveal">
+        <div class="section-kicker">Who we are</div>
+        <h2 class="section-title">One organization.<br class="d-none d-md-block"> Many ways to give hope.</h2>
+        <p class="section-copy">Discover the purpose, direction, values, leadership, history, recognitions, offices, and community initiatives of 1 PAG-ASA Kidneys Alagaan Natin Corp.</p>
+      </div>
+    </section>
+
+    <section class="pb-5" id="explore">
+      <div class="container">
+        <div class="row g-4">
+
+          <div class="col-sm-6 col-lg-4 reveal">
+            <article class="feature-card">
+              <div class="feature-icon"><i class="bi bi-bullseye"></i></div>
+              <h3>Purpose</h3>
+              <p>Learn why 1 PAG-ASA exists and the community need it seeks to address.</p>
+              <a class="feature-link" href="about us.html">Open Purpose <i class="bi bi-arrow-right"></i></a>
+            </article>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 reveal">
+            <article class="feature-card green">
+              <div class="feature-icon"><i class="bi bi-flag"></i></div>
+              <h3>Mission</h3>
+              <p>See the organization’s commitment to kidney health, education, and patient empowerment.</p>
+              <a class="feature-link" href="MISSION.html">Open Mission <i class="bi bi-arrow-right"></i></a>
+            </article>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 reveal">
+            <article class="feature-card">
+              <div class="feature-icon"><i class="bi bi-eye"></i></div>
+              <h3>Vision</h3>
+              <p>Explore the long-term future 1 PAG-ASA hopes to help build for Filipino communities.</p>
+              <a class="feature-link" href="vision.html">Open Vision <i class="bi bi-arrow-right"></i></a>
+            </article>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 reveal">
+            <article class="feature-card green">
+              <div class="feature-icon"><i class="bi bi-heart"></i></div>
+              <h3>Core Values</h3>
+              <p>Discover the principles that guide service, compassion, integrity, and accountability.</p>
+              <a class="feature-link" href="core values.html">Open Core Values <i class="bi bi-arrow-right"></i></a>
+            </article>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 reveal">
+            <article class="feature-card">
+              <div class="feature-icon"><i class="bi bi-lightbulb"></i></div>
+              <h3>Strategies</h3>
+              <p>Understand the approaches used to turn advocacy goals into practical community action.</p>
+              <a class="feature-link" href="strategies.html">Open Strategies <i class="bi bi-arrow-right"></i></a>
+            </article>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 reveal">
+            <article class="feature-card green">
+              <div class="feature-icon"><i class="bi bi-trophy"></i></div>
+              <h3>Goals</h3>
+              <p>Review the key outcomes and objectives that shape the organization’s programs.</p>
+              <a class="feature-link" href="goals.html">Open Goals <i class="bi bi-arrow-right"></i></a>
+            </article>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 reveal">
+            <article class="feature-card">
+              <div class="feature-icon"><i class="bi bi-people"></i></div>
+              <h3>Founding Fathers</h3>
+              <p>Meet the people whose experiences and advocacy helped establish 1 PAG-ASA.</p>
+              <a class="feature-link" href="founding fathers.html">Meet the Founders <i class="bi bi-arrow-right"></i></a>
+            </article>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 reveal">
+            <article class="feature-card green">
+              <div class="feature-icon"><i class="bi bi-patch-check"></i></div>
+              <h3>Certificates & Recognitions</h3>
+              <p>View official certificates, permits, accreditations, and organizational milestones.</p>
+              <a class="feature-link" href="certificate.html">View Certificates <i class="bi bi-arrow-right"></i></a>
+            </article>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 reveal">
+            <article class="feature-card">
+              <div class="feature-icon"><i class="bi bi-clock-history"></i></div>
+              <h3>History</h3>
+              <p>Trace the organization’s journey, development, and continuing commitment to kidney health.</p>
+              <a class="feature-link" href="1PAGASA.html">Read History <i class="bi bi-arrow-right"></i></a>
+            </article>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 reveal">
+            <article class="feature-card green">
+              <div class="feature-icon"><i class="bi bi-geo-alt"></i></div>
+              <h3>Lemon Tree Office</h3>
+              <p>Access information about the organization’s Quezon City office.</p>
+              <a class="feature-link" href="lemon tree.html">View Office <i class="bi bi-arrow-right"></i></a>
+            </article>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 reveal">
+            <article class="feature-card">
+              <div class="feature-icon"><i class="bi bi-geo-alt-fill"></i></div>
+              <h3>Antipolo Office</h3>
+              <p>Find details about the Filinvest East Homes / Antipolo office location.</p>
+              <a class="feature-link" href="filinvest east homes.html">View Office <i class="bi bi-arrow-right"></i></a>
+            </article>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 reveal">
+            <article class="feature-card green">
+              <div class="feature-icon"><i class="bi bi-heart-fill"></i></div>
+              <h3>Donation Drive</h3>
+              <p>Learn more about approved support initiatives and ways to help advance the mission.</p>
+              <a class="feature-link" href="donation drive.html">Explore Donation Drive <i class="bi bi-arrow-right"></i></a>
+            </article>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section pt-4">
+      <div class="container reveal">
+        <div class="impact-panel">
+          <div class="section-kicker text-warning">Our commitment</div>
+          <h2 class="section-title text-white mb-3">Awareness that leads to action.</h2>
+          <p>1 PAG-ASA’s work connects kidney-health education with community support, responsible governance, and meaningful service to people and families affected by kidney disease.</p>
+          <div class="impact-tags">
+            <span><i class="bi bi-megaphone"></i> Awareness</span>
+            <span><i class="bi bi-heart-pulse"></i> Prevention</span>
+            <span><i class="bi bi-person-hearts"></i> Patient Support</span>
+            <span><i class="bi bi-shield-check"></i> Accountability</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
     <div class="container">
-        <div class="d-flex justify-content-center align-items-center mb-2">
-            <img src="pfp.jpg" alt="1 PAG-ASA Logo" style="height:40px; width:auto; margin-right:10px;">
-            <span class="fw-bold">1 PAG-ASA</span>
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-4">
+        <div class="d-flex align-items-center gap-3">
+          <img src="pfp.jpg" alt="1 PAG-ASA logo" class="footer-logo">
+          <div>
+            <h4>1 PAG-ASA</h4>
+            <small>Kidneys Alagaan Natin Corp.</small>
+          </div>
         </div>
-
-        <p class="mb-2">© 2026 1 PAG-ASA | Kidney Awareness Campaign</p>      
-
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="certificate.html">Certificates</a>
+          <a href="#top">Back to top</a>
         </div>
+      </div>
+      <hr class="border-secondary opacity-25 my-4">
+      <div class="small text-secondary">© 2026 1 PAG-ASA | Kidney Awareness Campaign</div>
     </div>
-</footer>   
+  </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-</script>
-<script>
-const images = [
-  "cert.jpg",
-  "cert2.jpg",
-  "cert3.jpg",
-  "cert4.jpg",
-  "cert5.jpg",
-  "cert6.jpg",
-  "cert7.jpg"
-];
-
-let currentIndex = 0;
-let zoomLevel = 1;
-
-const modalImage = document.getElementById("modalImage");
-const downloadBtn = document.getElementById("downloadBtn");
-
-// OPEN MODAL
-document.querySelectorAll('.cert-img').forEach(img => {
-  img.addEventListener('click', function() {
-    currentIndex = parseInt(this.dataset.index);
-    showImage();
-    new bootstrap.Modal(document.getElementById('certModal')).show();
-  });
-});
-
-// SHOW IMAGE
-function showImage() {
-  modalImage.src = images[currentIndex];
-  downloadBtn.href = images[currentIndex];
-  zoomLevel = 1;
-  modalImage.style.transform = "scale(1)";
-}
-
-// NEXT / PREV
-document.getElementById("nextBtn").onclick = () => {
-  currentIndex = (currentIndex + 1) % images.length;
-  showImage();
-};
-
-document.getElementById("prevBtn").onclick = () => {
-  currentIndex = (currentIndex - 1 + images.length) % images.length;
-  showImage();
-};
-
-// ZOOM
-document.getElementById("zoomIn").onclick = () => {
-  zoomLevel += 0.2;
-  modalImage.style.transform = `scale(${zoomLevel})`;
-};
-
-document.getElementById("zoomOut").onclick = () => {
-  zoomLevel = Math.max(1, zoomLevel - 0.2);
-  modalImage.style.transform = `scale(${zoomLevel})`;
-};
-
-// KEYBOARD SUPPORT
-document.addEventListener("keydown", (e) => {
-  if (e.key === "ArrowRight") document.getElementById("nextBtn").click();
-  if (e.key === "ArrowLeft") document.getElementById("prevBtn").click();
-});
-    // Modal functionality
-        function openModal(src) {
-            document.getElementById('modalImg').src = src;
-            new bootstrap.Modal(document.getElementById('imageModal')).show();
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const revealItems = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
         }
-          AOS.init({
-            duration: 1000,
-            once: true
-        });
-</script>
+      });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach(item => observer.observe(item));
+  </script>
 </body>
 </html>
