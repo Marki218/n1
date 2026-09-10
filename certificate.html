@@ -112,9 +112,9 @@
             transform: scale(1.035);
         }
 
-        .cert-label { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: .85rem 1rem; }
-        .cert-label strong { font-size: .86rem; }
-        .cert-label span { color: #748078; font-size: .73rem; }
+        .cert-label { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; padding: .85rem 1rem; }
+        .cert-label strong { flex: 1 1 auto; min-width: 0; font-size: .86rem; line-height: 1.35; overflow-wrap: anywhere; }
+        .cert-label span { flex: 0 0 auto; color: #748078; font-size: .73rem; white-space: nowrap; }
         .cert-label i { color: var(--primary-green); }
         .gallery-large .gallery-item { width: 50%; }
         .gallery-large .cert-img-container { aspect-ratio: 16 / 10; padding: 1rem; }
@@ -304,7 +304,7 @@
                 <input class="gallery-search" id="gallerySearch" type="search" placeholder="Search certificates..." autocomplete="off">
                 <button class="clear-search" id="clearSearch" type="button" aria-label="Clear search"><i class="bi bi-x-lg"></i></button>
             </div>
-            <span class="gallery-count" id="galleryCount" aria-live="polite">13 certificates</span>
+            <span class="gallery-count" id="galleryCount" aria-live="polite">14 certificates</span>
             <button class="layout-toggle" id="layoutToggle" type="button" aria-label="Use large gallery layout" aria-pressed="false" title="Change gallery layout"><i class="bi bi-grid-3x3-gap" aria-hidden="true"></i></button>
         </div>
         <div class="row g-4" id="galleryGrid"></div>
@@ -364,16 +364,22 @@
     <script>
         'use strict';
 
-        const images = [
-            'cert4.jpg', 'cert13.jpg', 'cert3.jpg', 'cert2.jpg', 'cert5.jpg', 'cert6.jpg',
-            'cert7.jpg', 'cert8.jfif', 'cert9.jfif', 'cert10.jfif', 'cert11.jfif', 'cert12.png', 'cert.jpg'
-        ];
-
-        const certificates = images.map((src, index) => ({
-            src,
-            originalIndex: index,
-            title: `Certificate ${index + 1}`
-        }));
+        const certificates = [
+            { src: 'cert4.jpg',   title: 'PCNC Certificate of Accreditation' },
+            { src: 'cert13.jpg',  title: 'Donee Institution Status' },
+            { src: 'cert3.jpg',   title: 'DSWD Certificate of Registration & License to Operate' },
+            { src: 'cert2.jpg',   title: 'SEC Certificate of Incorporation' },
+            { src: 'cert5.jpg',   title: 'Certificate of Tax Exemption' },
+            { src: 'cert6.jpg',   title: 'Barangay Clearance – Paligsahan, Quezon City' },
+            { src: 'cert7.jpg',   title: 'Barangay Clearance – Mayamot, Antipolo City' },
+            { src: 'cert8.jfif',  title: 'Quezon City Mayor’s Permit' },
+            { src: 'cert9.jfif',  title: 'BIR Form 2303 – Quezon City Office' },
+            { src: 'cert10.jfif', title: 'BIR Form 2303 – Antipolo Office (Registration Seal Badge)' },
+            { src: 'cert11.jfif', title: 'BIR Form 2303 – Quezon City Office (Registration Seal Badge)' },
+            { src: 'cert12.png',  title: 'BIR Form 2303 – Antipolo Office' },
+            { src: 'cert.jpg',    title: 'Donation Receipt' },
+            { src: 'cert14.jfif', title: 'BIR Donee Institution Certificate of Registration' }
+        ].map((item, index) => ({ ...item, originalIndex: index }));
 
         const grid = document.getElementById('galleryGrid');
         const emptyGallery = document.getElementById('emptyGallery');
